@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prasad Rane – Software Engineer & AI Enthusiast</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Prasad Rane – Software Engineer with 10+ years of experience in .NET, Angular, AWS, and AI. View professional journey, skills, projects, and AWS certification.">
+    <meta name="keywords" content="Prasad Rane, Software Engineer, .NET, Angular, AWS, AI, Amazon Bedrock, Portfolio">
+    <meta name="author" content="Prasad Rane">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Prasad Rane – Software Engineer Portfolio">
+    <meta property="og:description" content="Experienced Software Engineer specializing in cloud-native applications, AI integration, and full-stack development.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://prasadrane.github.io">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Prasad Rane – Software Engineer">
+    <meta name="twitter:description" content="Portfolio showcasing 10+ years of engineering experience, AWS certification, and innovative projects.">
+    
+    <style>
+        /* ---------- Professional Reset & Variables ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #ffffff;
+            --surface: #f8fafc;
+            --text-primary: #0f172a;
+            --text-secondary: #334155;
+            --accent: #2563eb;
+            --accent-light: #eff6ff;
+            --border: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+            padding-bottom: 0.25rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subhead {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: var(--text-primary);
+            margin: 3px 0;
+            transition: 0.2s;
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section:last-of-type {
+            border-bottom: none;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 5rem 0 4rem;
+            background: linear-gradient(to bottom, var(--surface), var(--bg));
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin: 1rem 0 1.5rem;
+        }
+
+        .hero-description {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: var(--surface);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg);
+            border-color: var(--accent);
+        }
+
+        /* About */
+        .about-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .about-text p {
+            margin-bottom: 1.25rem;
+            color: var(--text-secondary);
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .profile-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--accent), #1e40af);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .profile-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .profile-title {
+            color: var(--text-secondary);
+            margin: 0.25rem 0 1rem;
+        }
+
+        .profile-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .mini-skill {
+            background: var(--accent-light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            color: var(--accent);
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: box-shadow 0.2s;
+        }
+
+        .skill-category:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .skill-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-icon {
+            font-size: 1.25rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: var(--accent-light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            color: var(--accent);
+        }
+
+        /* Experience Timeline */
+        .experience-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+            padding-left: 2rem;
+            border-left: 2px solid var(--border);
+        }
+
+        .experience-dot {
+            position: absolute;
+            left: -0.5rem;
+            top: 0;
+            width: 0.75rem;
+            height: 0.75rem;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        .company-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .job-title {
+            font-weight: 500;
+            margin: 0.25rem 0;
+        }
+
+        .job-duration {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        .job-description ul {
+            list-style: none;
+            padding-left: 1rem;
+        }
+
+        .job-description li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .job-description li::before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+            position: absolute;
+            left: -1rem;
+        }
+
+        /* Certifications (New) */
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .cert-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: box-shadow 0.2s;
+        }
+
+        .cert-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .cert-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .cert-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-issuer {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-date {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin: 0.5rem 0;
+        }
+
+        .verify-link a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.875rem;
+        }
+
+        .verify-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Fun Projects (renamed to Projects) */
+        .fun-projects-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .fun-project-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .project-visual {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            background: var(--accent-light);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .project-content {
+            flex: 1;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-badge {
+            background: var(--accent-light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            color: var(--accent);
+        }
+
+        .project-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Contact */
+        .contact {
+            background: var(--surface);
+        }
+
+        .contact-content {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 2rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.2s;
+        }
+
+        .contact-item:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--bg);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 2rem;
+                transition: left 0.3s;
+                gap: 1.5rem;
+            }
+            .nav-menu.active {
+                left: 0;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            .about-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+            .experience-timeline {
+                padding-left: 1rem;
+            }
+            .experience-item {
+                padding-left: 1rem;
+            }
+            .fun-project-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        /* Fade-in animation (subtle) */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="#" class="logo">Prasad Rane</a>
+        <ul class="nav-menu">
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#experience" class="nav-link">Experience</a></li>
+            <li><a href="#certifications" class="nav-link">Certifications</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Prasad Sudhir Rane</h1>
+                <div class="hero-subtitle">Software Engineer & AI Enthusiast</div>
+                <p class="hero-description">
+                    Building next-generation applications with 10+ years of expertise in .NET, Angular, AWS, and AI technologies. 
+                    Passionate about creating scalable solutions that drive business growth and enhance user experiences.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#experience" class="btn btn-primary">View My Work →</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch ✉</a>
+                    <a href="#" class="btn btn-secondary" id="downloadResumeBtn">📄 Download Resume</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="fade-in">About Me</h2>
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <p>I'm a passionate <span class="highlight">Software Engineer</span> with 10+ years of experience building scalable web applications and inspired by AI-driven solutions. Recently at <span class="highlight">Rocket Mortgage</span>, I've engineered innovative solutions like an AI-powered chatbot using Amazon Bedrock.</p>
+                    
+                    <p>I specialize in <span class="highlight">end-to-end system design</span>, leading Agile teams, and bridging traditional development with modern AI tools to create intelligent, efficient solutions. Currently learning other backend frameworks and experimenting with AI agents.</p>
+                </div>
+                
+                <div class="about-visual fade-in">
+                    <div class="profile-card">
+                        <div class="profile-avatar">PR</div>
+                        <div class="profile-name">Prasad Rane</div>
+                        <div class="profile-title">AI-Driven Developer</div>
+                        <div class="profile-skills">
+                            <span class="mini-skill">C#</span>
+                            <span class="mini-skill">Angular</span>
+                            <span class="mini-skill">AWS</span>
+                            <span class="mini-skill">AI</span>
+                            <span class="mini-skill">.NET</span>
+                            <span class="mini-skill">Microservices</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-stats fade-in">
+                <div class="stat-item">
+                    <span class="stat-number">10+</span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">35+</span>
+                    <span class="stat-label">Projects Completed</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">Companies</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">15+</span>
+                    <span class="stat-label">Technologies</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="fade-in">Technical Expertise</h2>
+            <div class="skills-grid fade-in">
+                <div class="skill-category">
+                    <div class="skill-title"><span class="skill-icon">💻</span> Programming Languages</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">C#</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">LINQ</span>
+                        <span class="skill-tag">GraphQL</span>
+                        <span class="skill-tag">SCSS</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <div class="skill-title"><span class="skill-icon">⚛️</span> Frameworks & Libraries</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">ASP.NET Web API</span>
+                        <span class="skill-tag">Angular 12</span>
+                        <span class="skill-tag">NgRx</span>
+                        <span class="skill-tag">RxJS</span>
+                        <span class="skill-tag">SignalR</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <div class="skill-title"><span class="skill-icon">☁️</span> Cloud & DevOps</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AWS Lambda</span>
+                        <span class="skill-tag">AWS SQS</span>
+                        <span class="skill-tag">Terraform</span>
+                        <span class="skill-tag">CircleCI</span>
+                        <span class="skill-tag">GitHub Workflows</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <div class="skill-title"><span class="skill-icon">🤖</span> AI & Modern Tools</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Amazon Bedrock</span>
+                        <span class="skill-tag">GitHub Copilot</span>
+                        <span class="skill-tag">Claude Code</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <div class="skill-title"><span class="skill-icon">🔧</span> Development Tools</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Visual Studio</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">JetBrains Rider</span>
+                        <span class="skill-tag">Postman</span>
+                        <span class="skill-tag">Jenkins</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <div class="skill-title"><span class="skill-icon">📊</span> Monitoring & Analytics</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Splunk</span>
+                        <span class="skill-tag">Dynatrace</span>
+                        <span class="skill-tag">Pager Duty</span>
+                        <span class="skill-tag">ServiceNow</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="fade-in">Professional Journey</h2>
+            <div class="experience-timeline fade-in">
+                <div class="experience-item">
+                    <div class="experience-dot"></div>
+                    <div class="company-name">Rocket Mortgage</div>
+                    <div class="job-title">Software Engineer</div>
+                    <div class="job-duration">Jan 2023 – July 2025 | Remote, IL</div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Engineered an <span class="highlight">AI-powered loan information chatbot</span> using Amazon Bedrock (Claude Sonnet) and AWS Lambda</li>
+                            <li>Built internal and client-facing mortgage servicing applications using .NET APIs, AWS Lambda, SQS, and Angular</li>
+                            <li>Led design discussions, documented architectural decisions, and mentored junior engineers</li>
+                            <li>Leveraged AI tools (GitHub Copilot, Claude Code) to accelerate development processes</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-dot"></div>
+                    <div class="company-name">London Computer Systems</div>
+                    <div class="job-title">Software Developer</div>
+                    <div class="job-duration">Dec 2019 – Jan 2023 | Cincinnati, OH</div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Developed a <span class="highlight">reusable SignalR framework</span> for real-time communication features</li>
+                            <li>Designed end-to-end application features including database design and API development</li>
+                            <li>Implemented Angular client-server communication with NgRx state management</li>
+                            <li>Collaborated with cross-functional teams and guided junior developers</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-dot"></div>
+                    <div class="company-name">EXFO Electro Optical Engineering</div>
+                    <div class="job-title">Software Developer</div>
+                    <div class="job-duration">Mar 2015 – Jun 2018 | Pune, India</div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Developed MVC-based Web APIs using <span class="highlight">Test-Driven Development (TDD)</span></li>
+                            <li>Automated <span class="highlight">70% of UI tests</span> by creating a custom Test Complete framework</li>
+                            <li>Contributed to CI/CD pipeline implementation using Jenkins</li>
+                            <li>Delivered architecture mockups and prototypes during design phases</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-dot"></div>
+                    <div class="company-name">Tanish Infotech Solutions</div>
+                    <div class="job-title">Software Developer</div>
+                    <div class="job-duration">Mar 2014 – Feb 2015 | Pune, India</div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Built web and desktop applications on .NET framework</li>
+                            <li>Documented requirements through direct client engagement</li>
+                            <li>Gained foundational experience in software development lifecycle</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section (New) -->
+    <section id="certifications" class="section">
+        <div class="container">
+            <h2 class="fade-in">Certifications</h2>
+            <div class="certs-grid fade-in">
+                <div class="cert-card">
+                    <div class="cert-icon">☁️</div>
+                    <div class="cert-title">AWS Certified Cloud Practitioner</div>
+                    <div class="cert-issuer">Amazon Web Services Training and Certification</div>
+                    <div class="cert-date">Issued: Apr 2026 | Expires: Apr 2029</div>
+                    <div class="verify-link">
+                        <a href="https://credly.com/badges/337a36b4-0285-460e-b115-2023040ba6b5" target="_blank" rel="noopener noreferrer">
+                            🔗 Verify on Credly
+                        </a>
+                    </div>
+                </div>
+                <!-- You can add more certification cards here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section (renamed from Fun) -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="fade-in">Featured Projects</h2>
+            <div class="fun-projects-grid fade-in">
+                <div class="fun-project-card">
+                    <div class="project-visual">🏓</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Classic Pong Game</h3>
+                        <p class="project-description">
+                            A nostalgic recreation of the classic Pong game, built entirely with the assistance of GitHub Copilot. 
+                            Features smooth gameplay, responsive controls, and retro aesthetics.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">JavaScript</span>
+                            <span class="tech-badge">HTML5 Canvas</span>
+                            <span class="tech-badge">GitHub Copilot</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://prasadrane.github.io/Pong-Game/" class="btn btn-primary" target="_blank">Play Game 🎮</a>
+                            <a href="https://github.com/prasadrane/Pong-Game" class="btn btn-secondary" target="_blank">View Code 📂</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fun-project-card">
+                    <div class="project-visual">🌤️</div>
+                    <div class="project-content">
+                        <h3 class="project-title">ForecastFlow</h3>
+                        <p class="project-description">
+                            A smart daily planner that integrates weather forecasts with task management, providing location-based activity suggestions. 
+                            Features real-time weather data, AI-generated recommendations, and a beautiful responsive interface.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">.NET 9.0</span>
+                            <span class="tech-badge">Angular 20.1</span>
+                            <span class="tech-badge">AWS Lambda</span>
+                            <span class="tech-badge">OpenWeatherMap API</span>
+                            <span class="tech-badge">Terraform</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/prasadrane/ForecastFlow" class="btn btn-secondary" target="_blank">View Code 📂</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <div class="contact-content fade-in">
+                <h2>Let's Build Something Amazing</h2>
+                <p style="color: var(--text-secondary); margin: 1rem 0;">
+                    Ready to discuss your next project or explore opportunities? I'm always excited to connect with fellow innovators and organizations looking to push the boundaries of technology.
+                </p>
+                <div class="contact-info">
+                    <a href="tel:513-967-9423" class="contact-item">📞 513-967-9423</a>
+                    <a href="mailto:emailprasadrane@gmail.com" class="contact-item">✉️ emailprasadrane@gmail.com</a>
+                    <a href="https://www.linkedin.com/in/rane-prasad" class="contact-item" target="_blank">💼 LinkedIn</a>
+                    <a href="https://github.com/prasadrane" class="contact-item" target="_blank">🐙 GitHub</a>
+                    <a href="#" class="contact-item" id="downloadResumeBtnFooter">📄 Download Resume</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 Prasad Rane – Built with simplicity and professionalism.</p>
+</footer>
+
+<script>
+    // Mobile menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+    });
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+        });
+    });
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    // Scroll fade-in animation
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+    fadeElements.forEach(el => observer.observe(el));
+
+    // Download resume function
+    function downloadResume() {
+        const resumeUrl = 'https://github.com/prasadrane/prasadrane.github.io/raw/main/Prasad-Resume.pdf';
+        const link = document.createElement('a');
+        link.href = resumeUrl;
+        link.download = 'Prasad-Resume.pdf';
+        link.target = '_blank';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+    const downloadBtns = document.querySelectorAll('#downloadResumeBtn, #downloadResumeBtnFooter');
+    downloadBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            downloadResume();
+        });
+    });
+</script>
+</body>
+</html>
