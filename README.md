@@ -1,37 +1,108 @@
-## Welcome to GitHub Pages
+# Prasad Rane - Portfolio Website
 
-You can use the [editor on GitHub](https://github.com/prasadrane/prasadrane.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+A professional portfolio website showcasing software engineering experience, built with React, TypeScript, and Tailwind CSS.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## 🚀 Quick Start
 
-### Markdown
+### Prerequisites
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+- Node.js 18+
+- npm or yarn
 
-```markdown
-Syntax highlighted code block
+### Installation & Setup
 
-# Header 1
-## Header 2
-### Header 3
+1. **Clone or download this repository**
+2. **Update repository name** in these files:
+   - `vite.config.ts`: Update the `base` configuration with your repository name
+   - `package.json`: Update the `homepage` field
+   - `index.html`: Update Open Graph URLs
 
-- Bulleted
-- List
+3. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-1. Numbered
-2. List
+4. **Start development server**
+   ```bash
+   npm run dev
+   ```
 
-**Bold** and _Italic_ and `Code` text
+5. **Build for production**
+   ```bash
+   npm run build
+   ```
 
-[Link](url) and ![Image](src)
+## 📦 GitHub Pages Deployment
+
+### Automatic Deployment
+
+1. **Create a new GitHub repository**
+2. **Upload all files** from this folder to your repository
+3. **Enable GitHub Pages**:
+   - Go to repository Settings → Pages
+   - Set source to "GitHub Actions"
+4. **Push to main branch** - automatic deployment will start
+
+### Manual Deployment
+
+```bash
+npm run deploy
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+## 🎨 Customization
 
-### Jekyll Themes
+### Update Personal Information
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/prasadrane/prasadrane.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+Edit `src/pages/Portfolio.tsx` to update:
+- Personal details in hero section
+- Work experience
+- Skills and technologies
+- Project descriptions
+- Contact information
 
-### Support or Contact
+### Add Resume
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Place your resume PDF in the `public` folder as `resume.pdf`
+
+### Colors & Theme
+
+Update CSS variables in `src/index.css`:
+- `--github-accent`: Primary blue color
+- `--purple-accent`: Secondary purple color
+- `--success`: Green accent color
+
+## 📁 Project Structure
+
+```
+├── src/
+│   ├── components/ui/     # UI components
+│   ├── pages/            # Page components
+│   ├── lib/              # Utilities
+│   ├── hooks/            # Custom hooks
+│   └── index.css         # Global styles
+├── public/               # Static assets
+├── .github/workflows/    # GitHub Actions
+└── README.md
+```
+
+## 🛠️ Technologies
+
+- **Frontend**: React 18, TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: Radix UI
+- **Icons**: Lucide React, React Icons
+- **Routing**: Wouter
+- **Build**: Vite
+- **Deployment**: GitHub Pages
+
+## 📄 License
+
+MIT License
+
+## 📞 Contact
+
+Update contact information in the portfolio to reflect your details.
+
+---
+
+Built with ❤️ using React and deployed on GitHub Pages
