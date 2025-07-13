@@ -14,15 +14,19 @@
         }
 
         :root {
-            --primary-color: #6366f1;
-            --secondary-color: #8b5cf6;
-            --accent-color: #06b6d4;
+            /* Changed primary-color from purple to yellow */
+            --primary-color: #f59e0b; /* A vibrant yellow */
+            /* Changed secondary-color from purple to orange */
+            --secondary-color: #f97316; /* A strong orange */
+            /* Changed accent-color from teal to a brighter orange/gold */
+            --accent-color: #eab308; /* A brighter yellow/gold for accent */
             --text-primary: #1f2937;
             --text-secondary: #6b7280;
             --bg-primary: #0f172a;
             --bg-secondary: #1e293b;
             --bg-glass: rgba(255, 255, 255, 0.1);
-            --shadow-color: rgba(99, 102, 241, 0.3);
+            /* Updated shadow-color to match new primary color */
+            --shadow-color: rgba(245, 158, 11, 0.3);
         }
 
         body {
@@ -54,9 +58,10 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 40% 80%, rgba(6, 182, 212, 0.2) 0%, transparent 50%);
+                /* Updated radial gradients to match new color scheme */
+                radial-gradient(circle at 20% 50%, rgba(245, 158, 11, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(249, 115, 22, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(234, 179, 8, 0.2) 0%, transparent 50%);
             animation: float 20s ease-in-out infinite;
         }
 
@@ -114,6 +119,7 @@
             left: 0;
             width: 0;
             height: 2px;
+            /* Updated gradient for logo underline */
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
             transition: width 0.3s ease;
         }
@@ -135,6 +141,9 @@
             transition: all 0.3s ease;
             position: relative;
             padding: 10px 0;
+            display: flex; /* Added for icon alignment */
+            align-items: center; /* Added for icon alignment */
+            gap: 8px; /* Spacing between icon and text */
         }
 
         .nav-link::before {
@@ -144,6 +153,7 @@
             left: 50%;
             width: 0;
             height: 2px;
+            /* Updated gradient for nav link underline */
             background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
             transition: all 0.3s ease;
             transform: translateX(-50%);
@@ -224,14 +234,17 @@
         }
 
         .btn-primary {
+            /* Updated gradient for primary button */
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+            /* Updated shadow for primary button */
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.6);
+            /* Updated shadow for primary button on hover */
+            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.6);
         }
 
         .btn-secondary {
@@ -251,7 +264,8 @@
         .floating-element {
             position: absolute;
             border-radius: 50%;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            /* Updated gradient for floating elements */
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(249, 115, 22, 0.1));
             backdrop-filter: blur(10px);
             animation: floatAnimation 6s ease-in-out infinite;
         }
@@ -324,6 +338,7 @@
             left: 50%;
             width: 80px;
             height: 4px;
+            /* Updated gradient for section title underline */
             background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
             transform: translateX(-50%);
             border-radius: 2px;
@@ -364,17 +379,19 @@
         }
 
         .highlight {
+            /* Updated highlight color and background gradient */
             color: var(--accent-color);
             font-weight: 600;
             position: relative;
             padding: 2px 8px;
             border-radius: 6px;
-            background: linear-gradient(90deg, rgba(6, 182, 212, 0.2), rgba(99, 102, 241, 0.2));
+            background: linear-gradient(90deg, rgba(234, 179, 8, 0.2), rgba(245, 158, 11, 0.2));
             transition: all 0.3s ease;
         }
 
         .highlight:hover {
-            background: linear-gradient(90deg, rgba(6, 182, 212, 0.3), rgba(99, 102, 241, 0.3));
+            /* Updated highlight background gradient on hover */
+            background: linear-gradient(90deg, rgba(234, 179, 8, 0.3), rgba(245, 158, 11, 0.3));
             transform: scale(1.05);
         }
 
@@ -403,7 +420,8 @@
 
         .profile-card:hover {
             transform: translateY(-10px) rotateY(5deg);
-            box-shadow: 0 25px 50px rgba(99, 102, 241, 0.3);
+            /* Updated shadow for profile card on hover */
+            box-shadow: 0 25px 50px rgba(245, 158, 11, 0.3);
         }
 
         .profile-card::before {
@@ -413,6 +431,7 @@
             left: 0;
             right: 0;
             height: 4px;
+            /* Updated gradient for profile card border */
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
             animation: gradientSlide 3s ease-in-out infinite;
         }
@@ -425,6 +444,7 @@
         .profile-avatar {
             width: 120px;
             height: 120px;
+            /* Updated gradient for profile avatar */
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             border-radius: 50%;
             margin: 0 auto 20px;
@@ -461,6 +481,7 @@
         }
 
         .profile-title {
+            /* Updated profile title color */
             color: var(--accent-color);
             font-size: 1rem;
             margin-bottom: 20px;
@@ -475,17 +496,19 @@
         }
 
         .mini-skill {
-            background: rgba(99, 102, 241, 0.2);
+            /* Updated background and border for mini-skill tags */
+            background: rgba(245, 158, 11, 0.2);
             color: rgba(255, 255, 255, 0.9);
             padding: 4px 8px;
             border-radius: 12px;
             font-size: 0.75rem;
-            border: 1px solid rgba(99, 102, 241, 0.3);
+            border: 1px solid rgba(245, 158, 11, 0.3);
             transition: all 0.3s ease;
         }
 
         .mini-skill:hover {
-            background: rgba(99, 102, 241, 0.4);
+            /* Updated background for mini-skill tags on hover */
+            background: rgba(245, 158, 11, 0.4);
             transform: scale(1.1);
         }
 
@@ -581,6 +604,7 @@
             left: 0;
             right: 0;
             height: 2px;
+            /* Updated gradient for journey timeline */
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
             transform: translateY(-50%);
             z-index: 1;
@@ -617,12 +641,14 @@
 
         .journey-item:hover {
             transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.3);
+            /* Updated shadow for journey item on hover */
+            box-shadow: 0 15px 30px rgba(245, 158, 11, 0.3);
         }
 
         .journey-year {
             font-size: 1.1rem;
             font-weight: 700;
+            /* Updated journey year color */
             color: var(--accent-color);
             margin-bottom: 8px;
         }
@@ -669,12 +695,14 @@
 
         .stat-item:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.2);
+            /* Updated shadow for stat item on hover */
+            box-shadow: 0 15px 30px rgba(245, 158, 11, 0.2);
         }
 
         .stat-number {
             font-size: 2.5rem;
             font-weight: 800;
+            /* Updated stat number color */
             color: var(--primary-color);
             display: block;
             counter-reset: number;
@@ -695,6 +723,7 @@
         }
 
         .btn-download {
+            /* Updated gradient for download button */
             background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
             color: white;
             padding: 15px 30px;
@@ -708,7 +737,8 @@
             align-items: center;
             gap: 12px;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+            /* Updated shadow for download button */
+            box-shadow: 0 10px 30px rgba(249, 115, 22, 0.4);
             position: relative;
             overflow: hidden;
         }
@@ -730,7 +760,8 @@
 
         .btn-download:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.6);
+            /* Updated shadow for download button on hover */
+            box-shadow: 0 15px 40px rgba(249, 115, 22, 0.6);
         }
 
         .btn-download:active {
@@ -778,6 +809,7 @@
             left: 0;
             right: 0;
             height: 4px;
+            /* Updated gradient for skill category border */
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
             transform: translateX(-100%);
             transition: transform 0.3s ease;
@@ -789,7 +821,8 @@
 
         .skill-category:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+            /* Updated shadow for skill category on hover */
+            box-shadow: 0 20px 40px rgba(245, 158, 11, 0.2);
         }
 
         .skill-title {
@@ -805,6 +838,7 @@
         .skill-icon {
             width: 30px;
             height: 30px;
+            /* Updated gradient for skill icon */
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             border-radius: 8px;
             display: flex;
@@ -820,18 +854,20 @@
         }
 
         .skill-tag {
-            background: rgba(99, 102, 241, 0.2);
+            /* Updated background and border for skill tags */
+            background: rgba(245, 158, 11, 0.2);
             color: rgba(255, 255, 255, 0.9);
             padding: 8px 16px;
             border-radius: 25px;
             font-size: 0.9rem;
             font-weight: 500;
-            border: 1px solid rgba(99, 102, 241, 0.3);
+            border: 1px solid rgba(245, 158, 11, 0.3);
             transition: all 0.3s ease;
         }
 
         .skill-tag:hover {
-            background: rgba(99, 102, 241, 0.3);
+            /* Updated background for skill tags on hover */
+            background: rgba(245, 158, 11, 0.3);
             transform: translateY(-2px);
         }
 
@@ -848,6 +884,7 @@
             top: 0;
             bottom: 0;
             width: 2px;
+            /* Updated gradient for experience timeline */
             background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
             transform: translateX(-50%);
         }
@@ -876,7 +913,8 @@
 
         .experience-content:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.2);
+            /* Updated shadow for experience content on hover */
+            box-shadow: 0 15px 30px rgba(245, 158, 11, 0.2);
         }
 
         .experience-dot {
@@ -886,6 +924,7 @@
             transform: translate(-50%, -50%);
             width: 20px;
             height: 20px;
+            /* Updated gradient for experience dot */
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             border-radius: 50%;
             border: 4px solid var(--bg-primary);
@@ -895,6 +934,7 @@
         .company-name {
             font-size: 1.3rem;
             font-weight: 700;
+            /* Updated company name color */
             color: var(--primary-color);
             margin-bottom: 5px;
         }
@@ -932,6 +972,7 @@
             content: '→';
             position: absolute;
             left: 0;
+            /* Updated job description list item arrow color */
             color: var(--accent-color);
             font-weight: bold;
         }
@@ -1116,6 +1157,7 @@
         .cursor {
             width: 20px;
             height: 20px;
+            /* Updated cursor border color */
             border: 2px solid var(--primary-color);
             border-radius: 50%;
             position: fixed;
@@ -1128,6 +1170,7 @@
         .cursor-follower {
             width: 8px;
             height: 8px;
+            /* Updated cursor follower background color */
             background: var(--primary-color);
             border-radius: 50%;
             position: fixed;
@@ -1148,11 +1191,11 @@
         <div class="nav-container">
             <a href="#" class="logo">Prasad Rane</a>
             <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#home" class="nav-link"><span class="icon">🏠</span> Home</a></li>
+                <li><a href="#about" class="nav-link"><span class="icon">👤</span> About</a></li>
+                <li><a href="#skills" class="nav-link"><span class="icon">💡</span> Skills</a></li>
+                <li><a href="#experience" class="nav-link"><span class="icon">💼</span> Experience</a></li>
+                <li><a href="#contact" class="nav-link"><span class="icon">✉️</span> Contact</a></li>
             </ul>
             <div class="hamburger">
                 <span></span>
@@ -1231,7 +1274,7 @@
                     <span class="stat-label">Years Experience</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">50+</span>
+                    <span class="stat-number">35+</span>
                     <span class="stat-label">Projects Completed</span>
                 </div>
                 <div class="stat-item">
@@ -1302,7 +1345,6 @@
                         <span class="skill-tag">Amazon Bedrock</span>
                         <span class="skill-tag">GitHub Copilot</span>
                         <span class="skill-tag">Claude Code</span>
-                        <span class="skill-tag">OpenAI APIs</span>
                     </div>
                 </div>
                 
@@ -1542,8 +1584,9 @@
         // Add hover effects to buttons
         document.querySelectorAll('.btn').forEach(btn => {
             btn.addEventListener('mouseenter', () => {
+                // Updated cursor hover effect color
                 cursor.style.transform = 'translate(-50%, -50%) scale(2)';
-                cursor.style.backgroundColor = 'rgba(99, 102, 241, 0.2)';
+                cursor.style.backgroundColor = 'rgba(245, 158, 11, 0.2)';
             });
             
             btn.addEventListener('mouseleave', () => {
@@ -1622,6 +1665,7 @@
                     
                     switch(sectionId) {
                         case 'about':
+                            // Updated background gradients for sections
                             bgAnimation.style.background = 'linear-gradient(45deg, #0f172a, #1e293b, #334155)';
                             break;
                         case 'skills':
@@ -1716,4 +1760,3 @@
     </script>
 </body>
 </html>
-                
