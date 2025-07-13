@@ -175,8 +175,8 @@
         }
 
         .hero-title {
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 800;
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 700;
             color: white;
             margin-bottom: 20px;
             background: linear-gradient(135deg, #fff, #e2e8f0, #cbd5e1);
@@ -1183,6 +1183,10 @@
                     <span>Get In Touch</span>
                     <span>✉</span>
                 </a>
+                <a href="#" class="btn btn-secondary" onclick="downloadResume()">
+                    <span class="download-icon">📄</span>
+                    <span>Download Resume</span>
+                </a>                
             </div>
         </div>
     </section>
@@ -1192,16 +1196,9 @@
             <h2 class="section-title fade-in">About Me</h2>
             <div class="about-content fade-in">
                 <div class="about-text">
-                    <p>I'm a passionate <span class="highlight">Software Engineer</span> with 10+ years of experience building scalable web applications and pioneering AI-driven solutions. Currently at <span class="highlight">Rocket Mortgage</span>, I've engineered innovative solutions like an AI-powered chatbot using Amazon Bedrock.</p>
+                    <p>I'm a passionate <span class="highlight">Software Engineer</span> with 10+ years of experience building scalable web applications and inspired by AI-driven solutions. Currently at <span class="highlight">Rocket Mortgage</span>, I've engineered innovative solutions like an AI-powered chatbot using Amazon Bedrock.</p>
                     
-                    <p>I specialize in <span class="highlight">end-to-end system design</span>, leading Agile teams, and bridging traditional development with modern AI tools to create intelligent, efficient solutions.</p>
-                    
-                    <div class="download-resume">
-                        <a href="#" class="btn-download" onclick="downloadResume()">
-                            <span class="download-icon">📄</span>
-                            <span>Download Resume</span>
-                        </a>
-                    </div>
+                    <p>I specialize in <span class="highlight">end-to-end system design</span>, leading Agile teams, and bridging traditional development with modern AI tools to create intelligent, efficient solutions.</p>                    
                 </div>
                 
                 <div class="about-visual">
@@ -1220,7 +1217,7 @@
                             <span class="mini-skill">C#</span>
                             <span class="mini-skill">Angular</span>
                             <span class="mini-skill">AWS</span>
-                            <span class="mini-skill">AI/ML</span>
+                            <span class="mini-skill">AI</span>
                             <span class="mini-skill">.NET</span>
                             <span class="mini-skill">Azure</span>
                         </div>
@@ -1292,7 +1289,7 @@
                         <span class="skill-tag">AWS SQS</span>
                         <span class="skill-tag">Terraform</span>
                         <span class="skill-tag">CircleCI</span>
-                        <span class="skill-tag">GitHub Actions</span>
+                        <span class="skill-tag">GitHub Workflows</span>
                     </div>
                 </div>
                 
@@ -1647,8 +1644,8 @@
         // Download Resume Function
         function downloadResume() {
             // Update this URL to point to your actual resume in your GitHub repository
-            // Format: https://github.com/USERNAME/REPOSITORY-NAME/raw/main/resume.pdf
-            const resumeUrl = 'https://github.com/prasadrane/prasadrane.github.io/raw/main/Prasad-Resume.pdf';
+            // Format: https://github.com/USERNAME/REPOSITORY-NAME/raw/master/resume.pdf
+            const resumeUrl = 'https://github.com/prasadrane/prasadrane.github.io/raw/master/Prasad-Resume.pdf';
             
             // Get the button that was clicked
             const button = event.target.closest('a') || event.target;
@@ -1692,7 +1689,7 @@
         // Alternative function for direct GitHub raw file access
         function downloadResumeAlternative() {
             // If the above doesn't work, try this alternative approach
-            const resumeUrl = 'https://raw.githubusercontent.com/prasadrane/prasadrane.github.io/main/Prasad_Sudhir_Rane_Resume.pdf';
+            const resumeUrl = 'https://raw.githubusercontent.com/prasadrane/prasadrane.github.io/master/Prasad-Resume.pdf';
             
             fetch(resumeUrl)
                 .then(response => {
@@ -1705,7 +1702,7 @@
                     const url = window.URL.createObjectURL(blob);
                     const link = document.createElement('a');
                     link.href = url;
-                    link.download = 'Prasad_Sudhir_Rane_Resume.pdf';
+                    link.download = 'Prasad-Resume.pdf';
                     document.body.appendChild(link);
                     link.click();
                     document.body.removeChild(link);
