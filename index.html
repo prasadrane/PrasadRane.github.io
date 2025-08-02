@@ -978,6 +978,142 @@
             font-weight: bold;
         }
 
+        /* Fun Section */
+        .fun-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .fun-projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .fun-project-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 40px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .fun-project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .fun-project-card:hover::before {
+            transform: translateX(0);
+        }
+
+        .fun-project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(245, 158, 11, 0.3);
+        }
+
+        .project-visual {
+            position: relative;
+            min-width: 150px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-icon {
+            font-size: 4rem;
+            z-index: 2;
+            position: relative;
+            animation: gameIconFloat 3s ease-in-out infinite;
+        }
+
+        .project-glow {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: pulseGlow 2s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes gameIconFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.5; }
+        }
+
+        .project-content {
+            flex: 1;
+        }
+
+        .project-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #fff, var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .project-description {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .tech-badge {
+            background: rgba(245, 158, 11, 0.2);
+            color: rgba(255, 255, 255, 0.9);
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .tech-badge:hover {
+            background: rgba(245, 158, 11, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .project-actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
         /* Contact Section */
         .contact {
             background: rgba(255, 255, 255, 0.03);
@@ -1140,6 +1276,17 @@
             .stat-number {
                 font-size: 2rem;
             }
+
+            .fun-project-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 25px;
+                padding: 30px;
+            }
+
+            .project-actions {
+                justify-content: center;
+            }
         }
 
         /* Scroll animations */
@@ -1196,6 +1343,7 @@
                 <li><a href="#about" class="nav-link"><span class="icon">👤</span> About</a></li>
                 <li><a href="#skills" class="nav-link"><span class="icon">💡</span> Skills</a></li>
                 <li><a href="#experience" class="nav-link"><span class="icon">💼</span> Experience</a></li>
+                <li><a href="#fun" class="nav-link"><span class="icon">🎮</span> Fun</a></li>
                 <li><a href="#contact" class="nav-link"><span class="icon">✉️</span> Contact</a></li>
             </ul>
             <div class="hamburger">
@@ -1453,6 +1601,51 @@
         </div>
     </section>
 
+    <section id="fun" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Fun Projects</h2>
+            <div class="fun-content fade-in">
+                <div class="fun-description">
+                    <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.1rem; line-height: 1.8; text-align: center; margin-bottom: 40px;">
+                        Beyond professional development, I enjoy exploring creative projects and experimenting with new technologies. 
+                        Here's a fun game I built using <span class="highlight">GitHub Copilot</span> to explore AI-assisted development.
+                    </p>
+                </div>
+                
+                <div class="fun-projects-grid">
+                    <div class="fun-project-card">
+                        <div class="project-visual">
+                            <div class="project-icon">🏓</div>
+                            <div class="project-glow"></div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Classic Pong Game</h3>
+                            <p class="project-description">
+                                A nostalgic recreation of the classic Pong game, built entirely with the assistance of GitHub Copilot. 
+                                Features smooth gameplay, responsive controls, and retro aesthetics.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">HTML5 Canvas</span>
+                                <span class="tech-badge">GitHub Copilot</span>
+                            </div>
+                            <div class="project-actions">
+                                <a href="https://prasadrane.github.io/Pong-Game/" class="btn btn-primary" target="_blank">
+                                    <span>Play Game</span>
+                                    <span>🎮</span>
+                                </a>
+                                <a href="https://github.com/prasadrane/Pong-Game" class="btn btn-secondary" target="_blank">
+                                    <span>View Code</span>
+                                    <span>📂</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="contact" class="section contact">
         <div class="container">
             <div class="contact-content fade-in">
@@ -1674,6 +1867,9 @@
                             break;
                         case 'experience':
                             bgAnimation.style.background = 'linear-gradient(45deg, #334155, #1e293b, #0f172a)';
+                            break;
+                        case 'fun':
+                            bgAnimation.style.background = 'linear-gradient(45deg, #475569, #334155, #1e293b)';
                             break;
                         default:
                             bgAnimation.style.background = 'linear-gradient(45deg, #0f172a, #1e293b, #334155)';
