@@ -1889,8 +1889,8 @@
         // Download Resume Function
         function downloadResume() {
             // Update this URL to point to your actual resume in your GitHub repository
-            // Format: https://github.com/USERNAME/REPOSITORY-NAME/raw/master/resume.pdf
-            const resumeUrl = 'https://github.com/prasadrane/prasadrane.github.io/raw/master/Prasad-Resume.pdf';
+            // Format: https://github.com/USERNAME/REPOSITORY-NAME/raw/main/resume.pdf
+            const resumeUrl = 'https://github.com/prasadrane/prasadrane.github.io/raw/main/Prasad-Resume.pdf';
             
             // Get the button that was clicked
             const button = event.target.closest('a') || event.target;
@@ -1934,7 +1934,7 @@
         // Alternative function for direct GitHub raw file access
         function downloadResumeAlternative() {
             // If the above doesn't work, try this alternative approach
-            const resumeUrl = 'https://raw.githubusercontent.com/prasadrane/prasadrane.github.io/master/Prasad-Resume.pdf';
+            const resumeUrl = 'https://raw.githubusercontent.com/prasadrane/prasadrane.github.io/main/Prasad-Resume.pdf';
             
             fetch(resumeUrl)
                 .then(response => {
