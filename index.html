@@ -447,6 +447,14 @@
             margin-bottom: 0.75rem;
         }
 
+        .cert-icon-img {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 0.75rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow-sm);
+        }
+
         .cert-title {
             font-size: 1.25rem;
             font-weight: 600;
@@ -668,7 +676,7 @@
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">Prasad Sudhir Rane</h1>
+                <h1 class="hero-title">Prasad Rane</h1>
                 <div class="hero-subtitle">Software Engineer & AI Enthusiast</div>
                 <p class="hero-description">
                     Building next-generation applications with 10+ years of expertise in .NET, Angular, AWS, and AI technologies. 
@@ -677,7 +685,7 @@
                 <div class="cta-buttons">
                     <a href="#experience" class="btn btn-primary">View My Work →</a>
                     <a href="#contact" class="btn btn-secondary">Get In Touch ✉</a>
-                    <a href="#" class="btn btn-secondary" id="downloadResumeBtn">📄 Download Resume</a>
+                    <a href="https://drive.google.com/file/d/10VFd3_e__YUU_llrlyKj7111EH54Q-hF/view?usp=sharing" class="btn btn-secondary" id="downloadResumeBtn">📄 Download Resume</a>
                 </div>
             </div>
         </div>
@@ -698,7 +706,7 @@
                     <div class="profile-card">
                         <div class="profile-avatar">PR</div>
                         <div class="profile-name">Prasad Rane</div>
-                        <div class="profile-title">AI-Driven Developer</div>
+                        <div class="profile-title">Developer</div>
                         <div class="profile-skills">
                             <span class="mini-skill">C#</span>
                             <span class="mini-skill">Angular</span>
@@ -706,6 +714,7 @@
                             <span class="mini-skill">AI</span>
                             <span class="mini-skill">.NET</span>
                             <span class="mini-skill">Microservices</span>
+                            <span class="mini-skill">Python</span>
                         </div>
                     </div>
                 </div>
@@ -877,12 +886,14 @@
             <h2 class="fade-in">Certifications</h2>
             <div class="certs-grid fade-in">
                 <div class="cert-card">
-                    <div class="cert-icon">☁️</div>
+                    <a href="https://www.credly.com/badges/337a36b4-0285-460e-b115-2023040ba6b5/public_url" target="_blank" rel="noopener noreferrer">
+                        <img src="./aws-certified-cloud-practitioner-badge.png" alt="AWS Certified Cloud Practitioner Badge" class="cert-icon-img">
+                    </a>
                     <div class="cert-title">AWS Certified Cloud Practitioner</div>
                     <div class="cert-issuer">Amazon Web Services Training and Certification</div>
                     <div class="cert-date">Issued: Apr 2026 | Expires: Apr 2029</div>
                     <div class="verify-link">
-                        <a href="https://credly.com/badges/337a36b4-0285-460e-b115-2023040ba6b5" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.credly.com/badges/337a36b4-0285-460e-b115-2023040ba6b5/public_url" target="_blank" rel="noopener noreferrer">
                             🔗 Verify on Credly
                         </a>
                     </div>
@@ -954,7 +965,7 @@
                     <a href="mailto:emailprasadrane@gmail.com" class="contact-item">✉️ emailprasadrane@gmail.com</a>
                     <a href="https://www.linkedin.com/in/rane-prasad" class="contact-item" target="_blank">💼 LinkedIn</a>
                     <a href="https://github.com/prasadrane" class="contact-item" target="_blank">🐙 GitHub</a>
-                    <a href="#" class="contact-item" id="downloadResumeBtnFooter">📄 Download Resume</a>
+                    <a href="https://drive.google.com/file/d/10VFd3_e__YUU_llrlyKj7111EH54Q-hF/view?usp=sharing" class="contact-item" id="downloadResumeBtnFooter">📄 Download Resume</a>
                 </div>
             </div>
         </div>
@@ -1002,7 +1013,7 @@
 
     // Download resume function
     function downloadResume() {
-        const resumeUrl = 'https://github.com/prasadrane/prasadrane.github.io/raw/main/Prasad-Resume.pdf';
+        const resumeUrl = 'https://drive.google.com/file/d/10VFd3_e__YUU_llrlyKj7111EH54Q-hF/view?usp=sharing';
         const link = document.createElement('a');
         link.href = resumeUrl;
         link.download = 'Prasad-Resume.pdf';
