@@ -1,0 +1,14 @@
+/* Minimal base reset — all styles are inlined in App.tsx */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background: #ffffff;
+  color: #0f172a;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+}
