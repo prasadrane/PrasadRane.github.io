@@ -87,4 +87,40 @@ test.describe('Portfolio Page Tests', () => {
         const aiText = await lastAiMsg.innerText();
         expect(aiText.length).toBeGreaterThan(0);
     });
+
+    test('Floating chatbot widget can be collapsed and expanded', async ({ page }) => {
+        const chatbotContainer = page.locator('.mock-chatbot-widget-container');
+        await expect(chatbotContainer).toBeVisible();
+        await expect(chatbotContainer).not.toHaveClass(/collapsed/);
+
+        const collapseBtn = chatbotContainer.locator('.chat-header-close-btn');
+        await expect(collapseBtn).toBeVisible();
+
+        // Click collapse button
+        await collapseBtn.click();
+        await expect(chatbotContainer).toHaveClass(/collapsed/);
+
+        // Check that launcher button is now active
+        const launcherBtn = chatbotContainer.locator('.chatbot-launcher-btn');
+        await expect(launcherBtn).toBeVisible();
+
+        // Click launcher to expand again
+        await launcherBtn.click();
+        await expect(chatbotContainer).not.toHaveClass(/collapsed/);
+    });
+
+    test('View Resume buttons point to correct hosted app link', async ({ page }) => {
+        const viewResumeBtn = page.locator('#downloadResumeBtn');
+        await expect(viewResumeBtn).toBeVisible();
+        await expect(viewResumeBtn).toContainText(/View Resume/i);
+        await expect(viewResumeBtn).toHaveAttribute('href', 'https://prasad-resumes-graphrag.vercel.app/');
+        await expect(viewResumeBtn).toHaveAttribute('target', '_blank');
+
+        const footerResumeBtn = page.locator('#downloadResumeBtnFooter');
+        await expect(footerResumeBtn).toBeVisible();
+        await expect(footerResumeBtn).toContainText(/View Resume/i);
+        await expect(footerResumeBtn).toHaveAttribute('href', 'https://prasad-resumes-graphrag.vercel.app/');
+        await expect(footerResumeBtn).toHaveAttribute('target', '_blank');
+    });
 });
+

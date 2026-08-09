@@ -779,16 +779,108 @@
         }
 
         /* Mock Chatbot Widget CSS */
-        .mock-chatbot-widget {
-            border: 1px solid var(--border);
-            border-radius: 1rem;
-            background: var(--bg);
-            box-shadow: var(--shadow-sm);
+        .mock-chatbot-widget-container {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1000;
             display: flex;
             flex-direction: column;
-            height: 380px;
+            align-items: flex-end;
+            pointer-events: none;
+        }
+
+        .mock-chatbot-widget-container * {
+            pointer-events: auto;
+        }
+
+        .mock-chatbot-widget.floating {
+            border: 1px solid var(--border);
+            border-radius: 1.25rem;
+            background: var(--bg);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3), var(--shadow-md);
+            display: flex;
+            flex-direction: column;
+            width: 360px;
+            height: 420px;
             overflow: hidden;
             position: relative;
+            transform-origin: bottom right;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+        }
+
+        /* Collapsed state */
+        .mock-chatbot-widget-container.collapsed .mock-chatbot-widget.floating {
+            transform: scale(0) translateY(40px);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Floating launcher button */
+        .chatbot-launcher-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--accent-gradient, linear-gradient(135deg, var(--accent), #8b5cf6));
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            box-shadow: 0 8px 24px -4px rgba(59, 130, 246, 0.5), var(--shadow-md);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            transform: scale(0);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .chatbot-launcher-btn:hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 12px 28px -4px rgba(59, 130, 246, 0.6), var(--shadow-md);
+        }
+
+        .mock-chatbot-widget-container.collapsed .chatbot-launcher-btn {
+            transform: scale(1);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Pulse dot for launcher button */
+        .chatbot-launcher-btn .pulse-dot {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            width: 12px;
+            height: 12px;
+            background: #10b981;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        /* Collapse header button style */
+        .chat-header-close-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            transition: background-color 0.2s;
+        }
+
+        .chat-header-close-btn:hover {
+            background: var(--accent-light);
+            color: var(--accent);
         }
 
         .chat-header {
@@ -1145,9 +1237,8 @@
                     Passionate about merging robust backends with modern AI agents to create fast, scalable software solutions.
                 </p>
                 <div class="cta-buttons">
-                    <a href="#projects" class="btn btn-primary">Try My AI Chatbot 🤖</a>
-                    <a href="#experience" class="btn btn-secondary">View Professional Journey →</a>
-                    <a href="https://drive.google.com/file/d/10VFd3_e__YUU_llrlyKj7111EH54Q-hF/view?usp=sharing" class="btn btn-secondary" id="downloadResumeBtn">📄 Download Resume</a>
+                    <a href="#experience" class="btn btn-primary">View Professional Journey →</a>
+                    <a href="https://prasad-resumes-graphrag.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" id="downloadResumeBtn">📄 View Resume</a>
                 </div>
             </div>
         </div>
@@ -1374,64 +1465,28 @@
             <div class="fun-projects-grid fade-in">
                 <!-- Flagship GraphRAG Project -->
                 <div class="fun-project-card project-card-graphrag">
-                    <div class="project-card-graphrag-grid">
-                        <div class="project-content">
-                            <div class="project-header-row">
-                                <h3 class="project-title">Resume AI Chatbot & Tailoring Engine</h3>
-                                <span class="private-repo-badge">🔒 Private Code</span>
-                            </div>
-                            <p class="project-description">
-                                An agentic resume system powered by Microsoft GraphRAG and Google Gemini. Builds a localized knowledge graph of professional experience to answer recruiter questions and dynamically match/tailor resumes against job descriptions, outputting structured, ATS-optimized PDFs.
-                            </p>
-                            <div class="project-tech">
-                                <span class="tech-badge">Microsoft GraphRAG</span>
-                                <span class="tech-badge">Google Gemini</span>
-                                <span class="tech-badge">LiteLLM Fallback</span>
-                                <span class="tech-badge">OpenRouter</span>
-                                <span class="tech-badge">Vercel Serverless</span>
-                                <span class="tech-badge">Python</span>
-                            </div>
-                            <div class="project-actions">
-                                <a href="https://prasad-resumes-graphrag.vercel.app/" class="btn btn-primary" target="_blank">Launch App 🚀</a>
-                                <span class="verify-link" style="align-self: center; font-size: 0.85rem; color: var(--text-secondary);">
-                                    Code contains personal resume details.
-                                </span>
-                            </div>
+                    <div class="project-visual">🧠</div>
+                    <div class="project-content">
+                        <div class="project-header-row">
+                            <h3 class="project-title">Resume AI Chatbot & Tailoring Engine</h3>
+                            <span class="private-repo-badge">🔒 Private Code</span>
                         </div>
-
-                        <!-- Chatbot Widget Mockup -->
-                        <div class="mock-chatbot-widget">
-                            <div class="chat-header">
-                                <div class="chat-bot-info">
-                                    <div class="chat-avatar">AI</div>
-                                    <div>
-                                        <div class="chat-name">Prasad's Agent</div>
-                                        <div class="chat-status">
-                                            <span class="status-dot"></span>
-                                            Active GraphRAG Index
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="chat-messages" id="chat-messages-box">
-                                <div class="chat-message chat-message-ai">
-                                    Hi there! I'm Prasad's AI assistant. Click one of the questions below to test the GraphRAG query engine on my resume details!
-                                </div>
-                                <div class="chat-typing-indicator" id="chat-typing-indicator">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                            </div>
-                            <div class="chat-presets">
-                                <div class="chat-preset-title">Ask about Prasad:</div>
-                                <div class="chat-preset-buttons">
-                                    <button class="chat-preset-btn" onclick="sendMockMessage('ai-work')">AI at Rocket Mortgage 🤖</button>
-                                    <button class="chat-preset-btn" onclick="sendMockMessage('dotnet-exp')">.NET Experience 💻</button>
-                                    <button class="chat-preset-btn" onclick="sendMockMessage('cloud-dev')">Cloud & DevOps ☁️</button>
-                                    <button class="chat-preset-btn" onclick="sendMockMessage('journey')">Career Journey 📄</button>
-                                </div>
-                            </div>
+                        <p class="project-description">
+                            An agentic resume system powered by Microsoft GraphRAG and Google Gemini. Builds a localized knowledge graph of professional experience to answer recruiter questions and dynamically match/tailor resumes against job descriptions, outputting structured, ATS-optimized PDFs.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Microsoft GraphRAG</span>
+                            <span class="tech-badge">Google Gemini</span>
+                            <span class="tech-badge">LiteLLM Fallback</span>
+                            <span class="tech-badge">OpenRouter</span>
+                            <span class="tech-badge">Vercel Serverless</span>
+                            <span class="tech-badge">Python</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://prasad-resumes-graphrag.vercel.app/" class="btn btn-primary" target="_blank">Launch App 🚀</a>
+                            <span class="verify-link" style="align-self: center; font-size: 0.85rem; color: var(--text-secondary);">
+                                Code contains personal resume details.
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -1495,11 +1550,53 @@
                     <a href="mailto:emailprasadrane@gmail.com" class="contact-item">✉️ emailprasadrane@gmail.com</a>
                     <a href="https://www.linkedin.com/in/rane-prasad" class="contact-item" target="_blank">💼 LinkedIn</a>
                     <a href="https://github.com/prasadrane" class="contact-item" target="_blank">🐙 GitHub</a>
-                    <a href="https://drive.google.com/file/d/10VFd3_e__YUU_llrlyKj7111EH54Q-hF/view?usp=sharing" class="contact-item" id="downloadResumeBtnFooter">📄 Download Resume</a>
+                    <a href="https://prasad-resumes-graphrag.vercel.app/" target="_blank" rel="noopener noreferrer" class="contact-item" id="downloadResumeBtnFooter">📄 View Resume</a>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Floating Chatbot Widget Container -->
+    <div class="mock-chatbot-widget-container" id="chatbot-container">
+        <div class="mock-chatbot-widget floating">
+            <div class="chat-header">
+                <div class="chat-bot-info">
+                    <div class="chat-avatar">AI</div>
+                    <div>
+                        <div class="chat-name">Prasad's Agent</div>
+                        <div class="chat-status">
+                            <span class="status-dot"></span>
+                            Active GraphRAG Index
+                        </div>
+                    </div>
+                </div>
+                <button class="chat-header-close-btn" onclick="toggleChatbot(true)" aria-label="Collapse Chat">−</button>
+            </div>
+            <div class="chat-messages" id="chat-messages-box">
+                <div class="chat-message chat-message-ai">
+                    Hi there! I'm Prasad's AI assistant. Click one of the questions below to test the GraphRAG query engine on my resume details!
+                </div>
+                <div class="chat-typing-indicator" id="chat-typing-indicator">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="chat-presets">
+                <div class="chat-preset-title">Ask about Prasad:</div>
+                <div class="chat-preset-buttons">
+                    <button class="chat-preset-btn" onclick="sendMockMessage('ai-work')">AI at Rocket Mortgage 🤖</button>
+                    <button class="chat-preset-btn" onclick="sendMockMessage('dotnet-exp')">.NET Experience 💻</button>
+                    <button class="chat-preset-btn" onclick="sendMockMessage('cloud-dev')">Cloud & DevOps ☁️</button>
+                    <button class="chat-preset-btn" onclick="sendMockMessage('journey')">Career Journey 📄</button>
+                </div>
+            </div>
+        </div>
+        <button class="chatbot-launcher-btn" onclick="toggleChatbot(false)" aria-label="Expand Chat">
+            💬
+            <span class="pulse-dot"></span>
+        </button>
+    </div>
 </main>
 
 <footer>
@@ -1559,24 +1656,23 @@
     }, { threshold: 0.05 });
     fadeElements.forEach(el => observer.observe(el));
 
-    // Download resume function
-    function downloadResume() {
-        const resumeUrl = 'https://drive.google.com/file/d/10VFd3_e__YUU_llrlyKj7111EH54Q-hF/view?usp=sharing';
-        const link = document.createElement('a');
-        link.href = resumeUrl;
-        link.download = 'Prasad-Resume.pdf';
-        link.target = '_blank';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+    // Toggle Chatbot Expand/Collapse
+    function toggleChatbot(collapse) {
+        const container = document.getElementById('chatbot-container');
+        if (collapse) {
+            container.classList.add('collapsed');
+            localStorage.setItem('chatbot-collapsed', 'true');
+        } else {
+            container.classList.remove('collapsed');
+            localStorage.setItem('chatbot-collapsed', 'false');
+        }
     }
-    const downloadBtns = document.querySelectorAll('#downloadResumeBtn, #downloadResumeBtnFooter');
-    downloadBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            downloadResume();
-        });
-    });
+
+    // Initialize chatbot state (default expanded)
+    const isChatbotCollapsed = localStorage.getItem('chatbot-collapsed') === 'true';
+    if (isChatbotCollapsed) {
+        document.getElementById('chatbot-container').classList.add('collapsed');
+    }
 
     // Mock Chatbot Database & Interaction
     const mockQADatabase = {
