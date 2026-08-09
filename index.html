@@ -364,10 +364,14 @@
             right: -50px;
         }
 
-        /* Hero */
-        .hero {
+        /* Hero & Sections Ambient Glows */
+        .hero, .section {
             position: relative;
-            background: radial-gradient(circle at 10% 20%, var(--glow), transparent 45%);
+            background: radial-gradient(circle at 15% 25%, var(--glow), transparent 50%);
+        }
+
+        .section:nth-of-type(even) {
+            background: radial-gradient(circle at 85% 25%, var(--glow), transparent 50%);
         }
 
         .hero-content {
