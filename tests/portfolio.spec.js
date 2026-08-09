@@ -122,5 +122,34 @@ test.describe('Portfolio Page Tests', () => {
         await expect(footerResumeBtn).toHaveAttribute('href', 'https://prasad-resumes-graphrag.vercel.app/');
         await expect(footerResumeBtn).toHaveAttribute('target', '_blank');
     });
+
+    test('Recruiter can type a custom question and send it', async ({ page }) => {
+        const chatbotWidget = page.locator('.mock-chatbot-widget');
+        await expect(chatbotWidget).toBeVisible();
+
+        const inputField = chatbotWidget.locator('#chat-input-field');
+        await expect(inputField).toBeVisible();
+
+        // Type a custom question
+        await inputField.fill('Tell me about your EXFO work experience');
+        
+        const sendBtn = chatbotWidget.locator('#chat-send-btn');
+        await expect(sendBtn).toBeVisible();
+        await sendBtn.click();
+
+        // Wait for streaming animation
+        await page.waitForTimeout(4500);
+
+        // Check that the user message was added
+        const lastUserMsg = chatbotWidget.locator('.chat-message-user').last();
+        await expect(lastUserMsg).toBeVisible();
+        await expect(lastUserMsg).toContainText("Tell me about your EXFO work experience");
+
+        // Check that the AI response was added
+        const lastAiMsg = chatbotWidget.locator('.chat-message-ai').last();
+        await expect(lastAiMsg).toBeVisible();
+        const aiText = await lastAiMsg.innerText();
+        expect(aiText).toContain("EXFO");
+    });
 });
 
