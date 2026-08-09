@@ -137,9 +137,6 @@ test.describe('Portfolio Page Tests', () => {
         await expect(sendBtn).toBeVisible();
         await sendBtn.click({ force: true });
 
-        // Wait for streaming animation
-        await page.waitForTimeout(4500);
-
         // Check that the user message was added
         const lastUserMsg = chatbotWidget.locator('.chat-message-user').last();
         await expect(lastUserMsg).toBeVisible();
@@ -148,8 +145,17 @@ test.describe('Portfolio Page Tests', () => {
         // Check that the AI response was added
         const lastAiMsg = chatbotWidget.locator('.chat-message-ai').last();
         await expect(lastAiMsg).toBeVisible();
-        const aiText = await lastAiMsg.innerText();
-        expect(aiText).toContain("EXFO");
+        await expect(lastAiMsg).toContainText("EXFO", { timeout: 10000 });
+    });
+
+    test('Lenis smooth scrolling library is initialized', async ({ page }) => {
+        // Check if the Lenis script is loaded and defined on the window
+        const isLenisDefined = await page.evaluate(() => typeof Lenis !== 'undefined');
+        expect(isLenisDefined).toBe(true);
+
+        // Check if window.lenis is initialized
+        const isLenisInitialized = await page.evaluate(() => typeof window.lenis !== 'undefined');
+        expect(isLenisInitialized).toBe(true);
     });
 });
 
