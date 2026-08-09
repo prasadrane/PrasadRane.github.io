@@ -186,7 +186,7 @@
             border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1100;
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
         }
@@ -277,10 +277,78 @@
             transition: 0.2s;
         }
 
-        /* Sections */
-        .section {
-            padding: 5.5rem 0;
-            border-bottom: 1px solid var(--border);
+        /* Scroll Snapping and Section Animations */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Section transitions (Expand/Collapse as we scroll) */
+        .section, .hero {
+            opacity: 0;
+            transform: scale(0.92) translateY(60px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
+            scroll-margin-top: 70px;
+        }
+
+        /* Active state (expanded) */
+        .section.active-section, .hero.active-section {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        /* Collapsed state (when section is scrolled above viewport) */
+        .section.collapsed-above, .hero.collapsed-above {
+            opacity: 0;
+            transform: scale(0.92) translateY(-60px);
+        }
+
+        @media (min-width: 993px) {
+            html {
+                scroll-snap-type: y proximity; /* Natural smooth scroll feel */
+            }
+
+            .section, .hero {
+                scroll-snap-align: center; /* Center active section in viewport */
+                scroll-snap-stop: always;
+                height: 82vh; /* Leaves 18% of viewport height (9vh top/bottom) for glimpses */
+                min-height: 82vh;
+                margin: 4vh 0; /* Add vertical spacing to separate them visual deck style */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+                padding: 0 !important;
+                border-bottom: none !important;
+            }
+
+            /* Container size limits to fit screen */
+            .section .container, .hero .container {
+                width: 100%;
+                max-height: 75vh;
+                overflow-y: auto;
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+                scrollbar-width: thin;
+                scrollbar-color: var(--border) transparent;
+            }
+
+            .section .container::-webkit-scrollbar, .hero .container::-webkit-scrollbar {
+                width: 4px;
+            }
+            .section .container::-webkit-scrollbar-thumb, .hero .container::-webkit-scrollbar-thumb {
+                background: var(--border);
+                border-radius: 100px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .section, .hero {
+                min-height: auto;
+                padding: 4.5rem 0;
+                border-bottom: 1px solid var(--border);
+            }
         }
 
         .section:last-of-type {
@@ -313,7 +381,6 @@
 
         /* Hero */
         .hero {
-            padding: 7.5rem 0 6rem;
             position: relative;
             background: radial-gradient(circle at 10% 20%, var(--glow), transparent 45%);
         }
@@ -1816,16 +1883,63 @@
         });
     });
 
-    // Scroll fade-in animation
-    const fadeElements = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver((entries) => {
+    // Scroll transition animation for collapsing/expanding sections (deck of cards transition)
+    const observerOptions = {
+        threshold: 0.15, // Trigger when 15% of section is visible
+        rootMargin: "-10% 0px -10% 0px" // Offset top and bottom slightly to detect active section center
+    };
+
+    const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
+            const rect = entry.boundingClientRect;
+            // Check if center of section has scrolled past center of viewport
+            const isAbove = (rect.top + rect.height / 2) < (window.innerHeight / 2);
+
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+                entry.target.classList.add('active-section');
+                entry.target.classList.remove('collapsed-above');
+                
+                // Trigger inner fade-ins inside active section
+                entry.target.querySelectorAll('.fade-in').forEach(el => {
+                    el.classList.add('visible');
+                });
+                
+                // Update active link in navbar
+                const id = entry.target.getAttribute('id');
+                updateActiveNavLink(id);
+            } else {
+                entry.target.classList.remove('active-section');
+                if (isAbove) {
+                    entry.target.classList.add('collapsed-above');
+                } else {
+                    entry.target.classList.remove('collapsed-above');
+                }
             }
         });
-    }, { threshold: 0.05 });
-    fadeElements.forEach(el => observer.observe(el));
+    }, observerOptions);
+
+    const scrollSections = document.querySelectorAll('.section, .hero');
+    scrollSections.forEach(sec => sectionObserver.observe(sec));
+
+    function updateActiveNavLink(id) {
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${id}`) {
+                link.classList.add('active');
+                link.style.background = 'var(--accent-light)';
+                link.style.color = 'var(--accent)';
+            } else {
+                link.style.background = 'transparent';
+                link.style.color = 'var(--text-secondary)';
+            }
+        });
+    }
+
+    // Set first section active on load instantly
+    const heroSection = document.getElementById('home');
+    if (heroSection) {
+        heroSection.classList.add('active-section');
+    }
 
     // Toggle Chatbot Expand/Collapse
     function toggleChatbot(collapse) {
