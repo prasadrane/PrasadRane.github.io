@@ -323,10 +323,14 @@
                 border-bottom: none !important;
             }
 
-            /* Container size limits to fit screen */
+            /* Container size limits to fit screen and shift left for chatbot spacing */
             .section .container, .hero .container {
                 width: 100%;
+                max-width: 1350px;
                 max-height: 75vh;
+                margin-left: 6%;
+                margin-right: auto;
+                padding-right: 420px;
                 overflow-y: auto;
                 padding-top: 1rem;
                 padding-bottom: 1rem;
@@ -988,22 +992,34 @@
         }
 
         .chat-avatar {
-            width: 32px;
-            height: 32px;
-            background: var(--accent);
-            color: var(--bg);
-            color: var(--text-contrast-primary, #ffffff);
+            width: 36px;
+            height: 36px;
+            background: var(--accent-light);
             border-radius: 100px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.85rem;
-            font-weight: 700;
-            font-family: var(--font-display);
         }
 
-        body.dark-theme .chat-avatar {
-            color: #062e6f;
+        @keyframes bot-eyes-animation {
+            0%, 25%, 75%, 100% {
+                transform: translateY(0) scaleY(1);
+            }
+            30% {
+                transform: translateY(0) scaleY(0.1);
+            }
+            35%, 65% {
+                transform: translateY(2.5px) scaleY(1);
+            }
+        }
+
+        .bot-eyes {
+            animation: bot-eyes-animation 5s infinite ease-in-out;
+            transform-origin: center;
+        }
+
+        .bot-avatar-svg {
+            display: block;
         }
 
         .chat-name {
@@ -1789,7 +1805,17 @@
         <div class="mock-chatbot-widget floating">
             <div class="chat-header">
                 <div class="chat-bot-info">
-                    <div class="chat-avatar">AI</div>
+                    <div class="chat-avatar">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="bot-avatar-svg">
+                            <rect x="3" y="6" width="18" height="14" rx="4" fill="var(--accent)" />
+                            <path d="M12 6V2" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" />
+                            <circle cx="12" cy="2" r="1.5" fill="var(--accent)" />
+                            <g class="bot-eyes">
+                                <circle cx="8" cy="13" r="1.5" fill="white" />
+                                <circle cx="16" cy="13" r="1.5" fill="white" />
+                            </g>
+                        </svg>
+                    </div>
                     <div>
                         <div class="chat-name">Prasad's Agent</div>
                         <div class="chat-status">
@@ -1827,7 +1853,15 @@
             </div>
         </div>
         <button class="chatbot-launcher-btn" onclick="toggleChatbot(false)" aria-label="Expand Chat">
-            <span class="material-symbols-outlined" style="font-size: 1.8rem;">chat</span>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" class="bot-avatar-svg">
+                <rect x="3" y="6" width="18" height="14" rx="4" fill="var(--accent)" />
+                <path d="M12 6V2" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" />
+                <circle cx="12" cy="2" r="1.5" fill="var(--accent)" />
+                <g class="bot-eyes">
+                    <circle cx="8" cy="13" r="1.5" fill="white" />
+                    <circle cx="16" cy="13" r="1.5" fill="white" />
+                </g>
+            </svg>
             <span class="pulse-dot"></span>
         </button>
     </div>
