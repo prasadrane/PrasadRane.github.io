@@ -90,6 +90,8 @@
             --glow-strong: var(--m3-light-glow-strong);
             --nav-bg: rgba(248, 250, 253, 0.85);
             --gradient-text: linear-gradient(135deg, var(--m3-light-on-background), var(--m3-light-primary));
+            --bg-gradient: linear-gradient(180deg, #f8fafd 0%, #eef3fc 35%, #e3ecfa 70%, #f8fafd 100%);
+            --bot-eye-color: #ffffff;
         }
 
         body.dark-theme {
@@ -109,6 +111,8 @@
             --glow-strong: var(--m3-dark-glow-strong);
             --nav-bg: rgba(11, 14, 20, 0.85);
             --gradient-text: linear-gradient(135deg, #e2e2e9, var(--m3-dark-primary));
+            --bg-gradient: linear-gradient(180deg, #0b0e14 0%, #0f131c 30%, #151922 60%, #0b0e14 100%);
+            --bot-eye-color: #0b0e14;
         }
 
         * {
@@ -120,7 +124,7 @@
 
         body {
             font-family: var(--font-sans);
-            background: var(--bg);
+            background: var(--bg-gradient);
             color: var(--text-primary);
             line-height: 1.6;
             scroll-behavior: smooth;
@@ -305,45 +309,22 @@
         }
 
         @media (min-width: 993px) {
-            html {
-                scroll-snap-type: y proximity; /* Natural smooth scroll feel */
-            }
-
             .section, .hero {
-                scroll-snap-align: center; /* Center active section in viewport */
-                scroll-snap-stop: always;
-                height: 82vh; /* Leaves 18% of viewport height (9vh top/bottom) for glimpses */
-                min-height: 82vh;
-                margin: 4vh 0; /* Add vertical spacing to separate them visual deck style */
+                min-height: 80vh;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                overflow: hidden;
-                padding: 0 !important;
+                padding: 4rem 0 !important;
                 border-bottom: none !important;
             }
 
-            /* Container size limits to fit screen and shift left for chatbot spacing */
+            /* Container size limits and shift left for chatbot spacing */
             .section .container, .hero .container {
                 width: 100%;
                 max-width: 1350px;
-                max-height: 75vh;
                 margin-left: 6%;
                 margin-right: auto;
                 padding-right: 420px;
-                overflow-y: auto;
-                padding-top: 1rem;
-                padding-bottom: 1rem;
-                scrollbar-width: thin;
-                scrollbar-color: var(--border) transparent;
-            }
-
-            .section .container::-webkit-scrollbar, .hero .container::-webkit-scrollbar {
-                width: 4px;
-            }
-            .section .container::-webkit-scrollbar-thumb, .hero .container::-webkit-scrollbar-thumb {
-                background: var(--border);
-                border-radius: 100px;
             }
         }
 
@@ -1377,7 +1358,7 @@
         }
     </style>
 </head>
-<body class="dark-theme">
+<body class="light-theme">
 
 <nav class="navbar">
     <div class="nav-container">
@@ -1806,13 +1787,13 @@
             <div class="chat-header">
                 <div class="chat-bot-info">
                     <div class="chat-avatar">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="bot-avatar-svg">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" class="bot-avatar-svg">
                             <rect x="3" y="6" width="18" height="14" rx="4" fill="var(--accent)" />
                             <path d="M12 6V2" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" />
                             <circle cx="12" cy="2" r="1.5" fill="var(--accent)" />
                             <g class="bot-eyes">
-                                <circle cx="8" cy="13" r="1.5" fill="white" />
-                                <circle cx="16" cy="13" r="1.5" fill="white" />
+                                <circle cx="8" cy="13" r="1.5" fill="var(--bot-eye-color)" />
+                                <circle cx="16" cy="13" r="1.5" fill="var(--bot-eye-color)" />
                             </g>
                         </svg>
                     </div>
@@ -1853,13 +1834,13 @@
             </div>
         </div>
         <button class="chatbot-launcher-btn" onclick="toggleChatbot(false)" aria-label="Expand Chat">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" class="bot-avatar-svg">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" class="bot-avatar-svg">
                 <rect x="3" y="6" width="18" height="14" rx="4" fill="var(--accent)" />
                 <path d="M12 6V2" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" />
                 <circle cx="12" cy="2" r="1.5" fill="var(--accent)" />
                 <g class="bot-eyes">
-                    <circle cx="8" cy="13" r="1.5" fill="white" />
-                    <circle cx="16" cy="13" r="1.5" fill="white" />
+                    <circle cx="8" cy="13" r="1.5" fill="var(--bot-eye-color)" />
+                    <circle cx="16" cy="13" r="1.5" fill="var(--bot-eye-color)" />
                 </g>
             </svg>
             <span class="pulse-dot"></span>
@@ -1877,8 +1858,8 @@
     const themeIcon = document.getElementById('theme-icon');
     const body = document.body;
 
-    // Set dark theme as default
-    let currentTheme = localStorage.getItem('theme') || 'dark';
+    // Set light theme as default
+    let currentTheme = localStorage.getItem('theme') || 'light';
     body.className = currentTheme + '-theme';
     themeIcon.textContent = currentTheme === 'dark' ? 'light_mode' : 'dark_mode';
 

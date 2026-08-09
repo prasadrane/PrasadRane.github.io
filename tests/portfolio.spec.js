@@ -47,20 +47,19 @@ test.describe('Portfolio Page Tests', () => {
         // Default theme class checks
         const body = page.locator('body');
         
-        // Let's check how the themes are configured
-        // Default is dark theme
-        const isDark = await body.evaluate(el => el.classList.contains('dark-theme'));
-        expect(isDark).toBe(true);
-
-        // Click toggle to switch to light mode
-        await themeToggle.click({ force: true });
+        // Default is now light theme
         const isLight = await body.evaluate(el => el.classList.contains('light-theme'));
         expect(isLight).toBe(true);
 
-        // Click again to switch back to dark mode
+        // Click toggle to switch to dark mode
         await themeToggle.click({ force: true });
-        const isDarkAgain = await body.evaluate(el => el.classList.contains('dark-theme'));
-        expect(isDarkAgain).toBe(true);
+        const isDark = await body.evaluate(el => el.classList.contains('dark-theme'));
+        expect(isDark).toBe(true);
+
+        // Click again to switch back to light mode
+        await themeToggle.click({ force: true });
+        const isLightAgain = await body.evaluate(el => el.classList.contains('light-theme'));
+        expect(isLightAgain).toBe(true);
     });
 
     test('Interactive mock chatbot widget in the project card works', async ({ page }) => {
