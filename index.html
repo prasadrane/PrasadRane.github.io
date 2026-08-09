@@ -1859,18 +1859,18 @@
     const body = document.body;
 
     // Set light theme as default
-    let currentTheme = localStorage.getItem('theme') || 'light';
+    let currentTheme = localStorage.getItem('theme-v3') || 'light';
     body.className = currentTheme + '-theme';
     themeIcon.textContent = currentTheme === 'dark' ? 'light_mode' : 'dark_mode';
 
     themeToggleBtn.addEventListener('click', () => {
         if (body.classList.contains('dark-theme')) {
             body.className = 'light-theme';
-            localStorage.setItem('theme', 'light');
+            localStorage.setItem('theme-v3', 'light');
             themeIcon.textContent = 'dark_mode';
         } else {
             body.className = 'dark-theme';
-            localStorage.setItem('theme', 'dark');
+            localStorage.setItem('theme-v3', 'dark');
             themeIcon.textContent = 'light_mode';
         }
     });
