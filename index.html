@@ -18,65 +18,141 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Prasad Rane – Software Engineer">
     <meta name="twitter:description" content="Portfolio showcasing 10+ years of engineering experience, AWS certification, and innovative projects.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     
     <style>
-        /* ---------- Professional Reset & Variables ---------- */
+        /* ---------- Theme Variables & Base ---------- */
+        :root {
+            /* Light theme values */
+            --light-bg: #f8fafc;
+            --light-surface: #ffffff;
+            --light-surface-card: #ffffff;
+            --light-text-primary: #0f172a;
+            --light-text-secondary: #475569;
+            --light-accent: #2563eb;
+            --light-accent-light: #eff6ff;
+            --light-border: #e2e8f0;
+            --light-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --light-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+            --light-glow: rgba(37, 99, 235, 0.05);
+            --light-glow-strong: rgba(37, 99, 235, 0.15);
+
+            /* Dark theme values */
+            --dark-bg: #0b0f19;
+            --dark-surface: #111827;
+            --dark-surface-card: #1f2937;
+            --dark-text-primary: #f9fafb;
+            --dark-text-secondary: #9ca3af;
+            --dark-accent: #3b82f6;
+            --dark-accent-light: rgba(59, 130, 246, 0.1);
+            --dark-border: #374151;
+            --dark-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.5);
+            --dark-shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+            --dark-glow: rgba(59, 130, 246, 0.1);
+            --dark-glow-strong: rgba(59, 130, 246, 0.3);
+            
+            --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        body.light-theme {
+            --bg: var(--light-bg);
+            --surface: var(--light-surface);
+            --surface-card: var(--light-surface-card);
+            --text-primary: var(--light-text-primary);
+            --text-secondary: var(--light-text-secondary);
+            --accent: var(--light-accent);
+            --accent-light: var(--light-accent-light);
+            --border: var(--light-border);
+            --shadow-sm: var(--light-shadow-sm);
+            --shadow-md: var(--light-shadow-md);
+            --glow: var(--light-glow);
+            --glow-strong: var(--light-glow-strong);
+            --nav-bg: rgba(248, 250, 252, 0.85);
+            --theme-icon: "🌙";
+            --gradient-text: linear-gradient(135deg, var(--light-text-primary), var(--light-accent));
+        }
+
+        body.dark-theme {
+            --bg: var(--dark-bg);
+            --surface: var(--dark-surface);
+            --surface-card: var(--dark-surface-card);
+            --text-primary: var(--dark-text-primary);
+            --text-secondary: var(--dark-text-secondary);
+            --accent: var(--dark-accent);
+            --accent-light: var(--dark-accent-light);
+            --border: var(--dark-border);
+            --shadow-sm: var(--dark-shadow-sm);
+            --shadow-md: var(--dark-shadow-md);
+            --glow: var(--dark-glow);
+            --glow-strong: var(--dark-glow-strong);
+            --nav-bg: rgba(11, 15, 25, 0.85);
+            --theme-icon: "☀️";
+            --gradient-text: linear-gradient(135deg, #f9fafb, var(--dark-accent));
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        :root {
-            --bg: #ffffff;
-            --surface: #f8fafc;
-            --text-primary: #0f172a;
-            --text-secondary: #334155;
-            --accent: #2563eb;
-            --accent-light: #eff6ff;
-            --border: #e2e8f0;
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-            --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         body {
             font-family: var(--font-sans);
             background: var(--bg);
             color: var(--text-primary);
-            line-height: 1.5;
+            line-height: 1.6;
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         .container {
             max-width: 1100px;
             margin: 0 auto;
             padding: 0 1.5rem;
+            position: relative;
         }
 
         /* Typography */
         h1, h2, h3 {
-            font-weight: 600;
-            letter-spacing: -0.02em;
+            font-weight: 700;
+            letter-spacing: -0.03em;
         }
 
         h1 {
-            font-size: 3rem;
-            line-height: 1.2;
+            font-size: 3.5rem;
+            line-height: 1.15;
             margin-bottom: 1rem;
         }
 
         h2 {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            border-bottom: 2px solid var(--accent);
+            font-size: 2.25rem;
+            margin-bottom: 2.5rem;
+            position: relative;
             display: inline-block;
-            padding-bottom: 0.25rem;
+            padding-bottom: 0.5rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
         }
 
         h3 {
-            font-size: 1.25rem;
+            font-size: 1.35rem;
             margin-bottom: 0.5rem;
+            font-weight: 600;
         }
 
         .subhead {
@@ -87,13 +163,13 @@
 
         /* Navigation */
         .navbar {
-            background: var(--bg);
+            background: var(--nav-bg);
             border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
-            z-index: 10;
-            background: rgba(255,255,255,0.96);
-            backdrop-filter: blur(8px);
+            z-index: 100;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
 
         .nav-container {
@@ -106,22 +182,35 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1.35rem;
+            font-weight: 800;
             color: var(--text-primary);
             text-decoration: none;
+            letter-spacing: -0.04em;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
         }
 
         .nav-menu {
             display: flex;
             list-style: none;
             gap: 2rem;
+            align-items: center;
         }
 
         .nav-link {
             text-decoration: none;
             color: var(--text-secondary);
-            font-weight: 500;
+            font-weight: 550;
+            font-size: 0.925rem;
             transition: color 0.2s;
         }
 
@@ -129,23 +218,47 @@
             color: var(--accent);
         }
 
+        /* Theme Toggle Button */
+        .theme-toggle-btn {
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        .theme-toggle-btn::before {
+            content: var(--theme-icon);
+        }
+
         .hamburger {
             display: none;
             flex-direction: column;
             cursor: pointer;
+            gap: 4px;
         }
 
         .hamburger span {
-            width: 25px;
+            width: 22px;
             height: 2px;
             background: var(--text-primary);
-            margin: 3px 0;
             transition: 0.2s;
         }
 
         /* Sections */
         .section {
-            padding: 4rem 0;
+            padding: 5.5rem 0;
             border-bottom: 1px solid var(--border);
         }
 
@@ -153,10 +266,35 @@
             border-bottom: none;
         }
 
+        /* Decorative Glow Effects */
+        .glow-bg {
+            position: absolute;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: var(--glow-strong);
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .glow-bg-1 {
+            background: var(--accent);
+            top: 5%;
+            left: -50px;
+        }
+        
+        .glow-bg-2 {
+            background: #8b5cf6;
+            top: 25%;
+            right: -50px;
+        }
+
         /* Hero */
         .hero {
-            padding: 5rem 0 4rem;
-            background: linear-gradient(to bottom, var(--surface), var(--bg));
+            padding: 7.5rem 0 6rem;
+            position: relative;
+            background: radial-gradient(circle at 10% 20%, var(--glow), transparent 45%);
         }
 
         .hero-content {
@@ -164,24 +302,27 @@
         }
 
         .hero-title {
-            font-size: 3.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--text-primary), var(--accent));
+            font-size: 4rem;
+            font-weight: 800;
+            background: var(--gradient-text);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            margin-bottom: 1.25rem;
         }
 
         .hero-subtitle {
-            font-size: 1.5rem;
+            font-size: 1.65rem;
             color: var(--text-secondary);
-            margin: 1rem 0 1.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
         }
 
         .hero-description {
             color: var(--text-secondary);
-            margin-bottom: 2rem;
-            line-height: 1.6;
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
         }
 
         .cta-buttons {
@@ -193,15 +334,15 @@
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            font-weight: 500;
+            gap: 0.6rem;
+            padding: 0.85rem 1.65rem;
+            border-radius: 0.6rem;
+            font-weight: 600;
             text-decoration: none;
-            transition: all 0.2s;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             border: none;
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
 
         .btn-primary {
@@ -212,11 +353,12 @@
 
         .btn-primary:hover {
             background: #1d4ed8;
-            transform: translateY(-1px);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px var(--glow-strong);
         }
 
         .btn-secondary {
-            background: var(--surface);
+            background: var(--surface-card);
             color: var(--text-primary);
             border: 1px solid var(--border);
         }
@@ -224,57 +366,68 @@
         .btn-secondary:hover {
             background: var(--bg);
             border-color: var(--accent);
+            transform: translateY(-2px);
         }
 
         /* About */
         .about-content {
             display: grid;
             grid-template-columns: 2fr 1fr;
-            gap: 3rem;
+            gap: 4rem;
             align-items: start;
         }
 
         .about-text p {
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.5rem;
             color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.75;
         }
 
         .highlight {
             color: var(--accent);
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .profile-card {
-            background: var(--surface);
+            background: var(--surface-card);
             border: 1px solid var(--border);
-            border-radius: 1rem;
-            padding: 1.5rem;
+            border-radius: 1.25rem;
+            padding: 2rem;
             text-align: center;
             box-shadow: var(--shadow-sm);
         }
 
+        .profile-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+            box-shadow: 0 12px 20px -10px var(--glow-strong), var(--shadow-md);
+        }
+
         .profile-avatar {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, var(--accent), #1e40af);
+            width: 110px;
+            height: 110px;
+            background: linear-gradient(135deg, var(--accent), #8b5cf6);
             border-radius: 50%;
-            margin: 0 auto 1rem;
+            margin: 0 auto 1.25rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            font-weight: 700;
+            font-size: 2.25rem;
+            font-weight: 800;
             color: white;
+            box-shadow: var(--shadow-md);
         }
 
         .profile-name {
-            font-size: 1.25rem;
-            font-weight: 600;
+            font-size: 1.35rem;
+            font-weight: 700;
         }
 
         .profile-title {
             color: var(--text-secondary);
-            margin: 0.25rem 0 1rem;
+            margin: 0.25rem 0 1.25rem;
+            font-size: 0.95rem;
         }
 
         .profile-skills {
@@ -286,36 +439,46 @@
 
         .mini-skill {
             background: var(--accent-light);
-            padding: 0.25rem 0.75rem;
+            padding: 0.3rem 0.85rem;
             border-radius: 2rem;
-            font-size: 0.75rem;
+            font-size: 0.775rem;
+            font-weight: 600;
             color: var(--accent);
         }
 
         .about-stats {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin-top: 2rem;
+            gap: 1.25rem;
+            margin-top: 3rem;
         }
 
         .stat-item {
-            background: var(--surface);
+            background: var(--surface-card);
             border: 1px solid var(--border);
-            border-radius: 0.75rem;
-            padding: 1rem;
+            border-radius: 1rem;
+            padding: 1.5rem;
             text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
         }
 
         .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
+            font-size: 2.25rem;
+            font-weight: 800;
             color: var(--accent);
+            line-height: 1;
+            margin-bottom: 0.25rem;
         }
 
         .stat-label {
-            font-size: 0.875rem;
+            font-size: 0.85rem;
             color: var(--text-secondary);
+            font-weight: 550;
         }
 
         /* Skills */
@@ -326,26 +489,29 @@
         }
 
         .skill-category {
-            background: var(--surface);
+            background: var(--surface-card);
             border: 1px solid var(--border);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            transition: box-shadow 0.2s;
+            border-radius: 1.25rem;
+            padding: 1.75rem;
+            box-shadow: var(--shadow-sm);
         }
 
         .skill-category:hover {
-            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+            border-color: var(--accent);
+            box-shadow: 0 12px 20px -10px var(--glow-strong), var(--shadow-md);
         }
 
         .skill-title {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
+            gap: 0.6rem;
+            margin-bottom: 1.25rem;
+            font-weight: 650;
         }
 
         .skill-icon {
-            font-size: 1.25rem;
+            font-size: 1.35rem;
         }
 
         .skill-tags {
@@ -356,147 +522,183 @@
 
         .skill-tag {
             background: var(--accent-light);
-            padding: 0.25rem 0.75rem;
+            padding: 0.35rem 0.85rem;
             border-radius: 2rem;
-            font-size: 0.875rem;
+            font-size: 0.825rem;
             color: var(--accent);
+            font-weight: 600;
+            font-family: var(--font-mono);
         }
 
         /* Experience Timeline */
         .experience-timeline {
             position: relative;
-            padding-left: 2rem;
         }
 
         .experience-item {
             position: relative;
-            margin-bottom: 2.5rem;
-            padding-left: 2rem;
+            margin-bottom: 3.5rem;
+            padding-left: 2.5rem;
             border-left: 2px solid var(--border);
+        }
+
+        .experience-item:last-of-type {
+            margin-bottom: 0;
+            border-left: 2px solid transparent;
         }
 
         .experience-dot {
             position: absolute;
-            left: -0.5rem;
-            top: 0;
-            width: 0.75rem;
-            height: 0.75rem;
+            left: -6px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
             background: var(--accent);
             border-radius: 50%;
-            border: 2px solid white;
+            border: 2px solid var(--bg);
+            box-shadow: 0 0 0 4px var(--accent-light);
         }
 
         .company-name {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--accent);
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-primary);
         }
 
         .job-title {
-            font-weight: 500;
+            font-weight: 600;
             margin: 0.25rem 0;
+            color: var(--accent);
+            font-size: 1.05rem;
         }
 
         .job-duration {
             font-size: 0.875rem;
             color: var(--text-secondary);
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
         }
 
         .job-description ul {
             list-style: none;
-            padding-left: 1rem;
+            padding-left: 0.75rem;
         }
 
         .job-description li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.65rem;
             position: relative;
             color: var(--text-secondary);
+            font-size: 0.975rem;
+            line-height: 1.65;
         }
 
         .job-description li::before {
-            content: "•";
+            content: "→";
             color: var(--accent);
             font-weight: bold;
             position: absolute;
-            left: -1rem;
+            left: -1.25rem;
         }
 
-        /* Certifications (New) */
+        /* Certifications */
         .certs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 1.5rem;
-            margin-top: 1rem;
         }
 
         .cert-card {
-            background: var(--surface);
+            background: var(--surface-card);
             border: 1px solid var(--border);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            transition: box-shadow 0.2s;
+            border-radius: 1.25rem;
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-sm);
         }
 
         .cert-card:hover {
-            box-shadow: var(--shadow-md);
-        }
-
-        .cert-icon {
-            font-size: 2rem;
-            margin-bottom: 0.75rem;
+            transform: translateY(-4px);
+            border-color: var(--accent);
+            box-shadow: 0 12px 20px -10px var(--glow-strong), var(--shadow-md);
         }
 
         .cert-icon-img {
-            width: 64px;
-            height: 64px;
-            margin-bottom: 0.75rem;
-            border-radius: 8px;
+            width: 72px;
+            height: 72px;
+            margin-bottom: 1.25rem;
+            border-radius: 12px;
             box-shadow: var(--shadow-sm);
         }
 
         .cert-title {
             font-size: 1.25rem;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 0.5rem;
+            line-height: 1.35;
         }
 
         .cert-issuer {
             color: var(--text-secondary);
             margin-bottom: 0.5rem;
+            font-size: 0.95rem;
         }
 
         .cert-date {
-            font-size: 0.875rem;
+            font-size: 0.85rem;
             color: var(--text-secondary);
-            margin: 0.5rem 0;
+            margin: 0.5rem 0 1.25rem;
+            font-weight: 550;
+        }
+
+        .verify-link {
+            margin-top: auto;
         }
 
         .verify-link a {
             color: var(--accent);
             text-decoration: none;
-            font-size: 0.875rem;
+            font-size: 0.9rem;
+            font-weight: 600;
         }
 
         .verify-link a:hover {
             text-decoration: underline;
         }
 
-        /* Fun Projects (renamed to Projects) */
+        /* Featured Projects Grid */
         .fun-projects-grid {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .fun-project-card {
-            background: var(--surface);
+            background: var(--surface-card);
             border: 1px solid var(--border);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
+            border-radius: 1.25rem;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 2.25rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .fun-project-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 30px -10px var(--glow-strong), var(--shadow-md);
+        }
+
+        .project-card-graphrag {
+            background: radial-gradient(circle at 100% 100%, var(--glow), transparent 45%), var(--surface-card);
+            grid-template-columns: 1fr;
+        }
+
+        .project-card-graphrag-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 2.5rem;
         }
 
         .project-visual {
@@ -504,51 +706,263 @@
             width: 80px;
             height: 80px;
             background: var(--accent-light);
-            border-radius: 1rem;
+            border-radius: 1.25rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 2.25rem;
+            box-shadow: var(--shadow-sm);
         }
 
         .project-content {
-            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+            gap: 0.75rem;
         }
 
         .project-title {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.65rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .private-repo-badge {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
         }
 
         .project-description {
             color: var(--text-secondary);
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
+            font-size: 1rem;
+            line-height: 1.65;
         }
 
         .project-tech {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .tech-badge {
             background: var(--accent-light);
-            padding: 0.25rem 0.75rem;
+            padding: 0.35rem 0.85rem;
             border-radius: 2rem;
-            font-size: 0.75rem;
+            font-size: 0.775rem;
             color: var(--accent);
+            font-weight: 600;
+            font-family: var(--font-mono);
         }
 
         .project-actions {
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
+            margin-top: auto;
+        }
+
+        /* Mock Chatbot Widget CSS */
+        .mock-chatbot-widget {
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            background: var(--bg);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            height: 380px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .chat-header {
+            background: var(--surface-card);
+            border-bottom: 1px solid var(--border);
+            padding: 0.85rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chat-bot-info {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .chat-avatar {
+            width: 28px;
+            height: 28px;
+            background: var(--accent-gradient, linear-gradient(135deg, var(--accent), #8b5cf6));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .chat-name {
+            font-weight: 650;
+            font-size: 0.9rem;
+        }
+
+        .chat-status {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: pulse-green 2s infinite;
+        }
+
+        @keyframes pulse-green {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 5px rgba(16, 185, 129, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 1.25rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            scroll-behavior: smooth;
+        }
+
+        .chat-message {
+            max-width: 85%;
+            padding: 0.75rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            position: relative;
+        }
+
+        .chat-message-ai {
+            background: var(--surface-card);
+            align-self: flex-start;
+            border-bottom-left-radius: 0.25rem;
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .chat-message-user {
+            background: var(--accent);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 0.25rem;
+        }
+
+        .chat-typing-indicator {
+            align-self: flex-start;
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            padding: 0.75rem 1.15rem;
+            border-radius: 1rem;
+            border-bottom-left-radius: 0.25rem;
+            display: none;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .chat-typing-indicator span {
+            width: 6px;
+            height: 6px;
+            background: var(--text-secondary);
+            border-radius: 50%;
+            animation: bounce-dots 1.4s infinite ease-in-out both;
+        }
+
+        .chat-typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+        .chat-typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes bounce-dots {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1.0); }
+        }
+
+        .chat-presets {
+            padding: 0.85rem 1.25rem;
+            background: var(--surface-card);
+            border-top: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .chat-preset-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .chat-preset-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+        }
+
+        .chat-preset-btn {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .chat-preset-btn:hover:not(:disabled) {
+            border-color: var(--accent);
+            background: var(--accent-light);
+            color: var(--accent);
+        }
+
+        .chat-preset-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
         }
 
         /* Contact */
         .contact {
-            background: var(--surface);
+            background: var(--surface-card);
+            position: relative;
         }
 
         .contact-content {
@@ -557,43 +971,66 @@
             margin: 0 auto;
         }
 
+        .contact-content h2::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
         .contact-info {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
+            gap: 1.25rem;
+            margin-top: 3rem;
         }
 
         .contact-item {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
+            gap: 0.6rem;
+            padding: 0.65rem 1.35rem;
             background: var(--bg);
             border: 1px solid var(--border);
             border-radius: 2rem;
             text-decoration: none;
             color: var(--text-primary);
-            transition: all 0.2s;
+            font-weight: 550;
+            font-size: 0.925rem;
         }
 
         .contact-item:hover {
             border-color: var(--accent);
             color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 2rem;
+            padding: 2.5rem;
             color: var(--text-secondary);
-            font-size: 0.875rem;
+            font-size: 0.9rem;
+            font-weight: 500;
             border-top: 1px solid var(--border);
+            background: var(--bg);
         }
 
-        /* Responsive */
+        /* Responsive Layouts */
+        @media (max-width: 900px) {
+            .project-card-graphrag-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
         @media (max-width: 768px) {
+            h1 {
+                font-size: 2.75rem;
+            }
+            .hero-title {
+                font-size: 3rem;
+            }
             .nav-menu {
                 position: fixed;
                 top: 70px;
@@ -603,9 +1040,11 @@
                 background: var(--bg);
                 flex-direction: column;
                 align-items: center;
-                padding-top: 2rem;
-                transition: left 0.3s;
-                gap: 1.5rem;
+                padding-top: 3rem;
+                transition: left 0.3s ease;
+                gap: 2rem;
+                z-index: 99;
+                border-top: 1px solid var(--border);
             }
             .nav-menu.active {
                 left: 0;
@@ -615,25 +1054,41 @@
             }
             .about-content {
                 grid-template-columns: 1fr;
+                gap: 3rem;
             }
             .about-stats {
                 grid-template-columns: repeat(2, 1fr);
             }
+            .fun-project-card {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .project-visual {
+                width: 64px;
+                height: 64px;
+                font-size: 1.75rem;
+            }
+            .chat-preset-buttons {
+                grid-template-columns: 1fr;
+            }
+            .mock-chatbot-widget {
+                height: 340px;
+            }
+        }
+        
+        @media (max-width: 480px) {
             .hero-title {
                 font-size: 2.5rem;
             }
-            .hero-subtitle {
-                font-size: 1.25rem;
-            }
-            .experience-timeline {
-                padding-left: 1rem;
-            }
-            .experience-item {
-                padding-left: 1rem;
-            }
-            .fun-project-card {
+            .cta-buttons {
                 flex-direction: column;
-                align-items: flex-start;
+            }
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .about-stats {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -641,7 +1096,7 @@
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .fade-in.visible {
             opacity: 1;
@@ -649,29 +1104,36 @@
         }
     </style>
 </head>
-<body>
+<body class="dark-theme">
 
 <nav class="navbar">
     <div class="nav-container">
-        <a href="#" class="logo">Prasad Rane</a>
-        <ul class="nav-menu">
-            <li><a href="#home" class="nav-link">Home</a></li>
-            <li><a href="#about" class="nav-link">About</a></li>
-            <li><a href="#skills" class="nav-link">Skills</a></li>
-            <li><a href="#experience" class="nav-link">Experience</a></li>
-            <li><a href="#certifications" class="nav-link">Certifications</a></li>
-            <li><a href="#projects" class="nav-link">Projects</a></li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
+        <a href="#" class="logo">Prasad<span>Rane</span></a>
+        <div class="nav-right">
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#certifications" class="nav-link">Certifications</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Theme"></button>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </div>
 </nav>
 
 <main>
+    <!-- Decorative Ambient Glows -->
+    <div class="glow-bg glow-bg-1"></div>
+    <div class="glow-bg glow-bg-2"></div>
+
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
@@ -680,11 +1142,11 @@
                 <div class="hero-subtitle">Software Engineer & AI Enthusiast</div>
                 <p class="hero-description">
                     Building next-generation applications with 10+ years of expertise in .NET, Angular, AWS, and AI technologies. 
-                    Passionate about creating scalable solutions that drive business growth and enhance user experiences.
+                    Passionate about merging robust backends with modern AI agents to create fast, scalable software solutions.
                 </p>
                 <div class="cta-buttons">
-                    <a href="#experience" class="btn btn-primary">View My Work →</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch ✉</a>
+                    <a href="#projects" class="btn btn-primary">Try My AI Chatbot 🤖</a>
+                    <a href="#experience" class="btn btn-secondary">View Professional Journey →</a>
                     <a href="https://drive.google.com/file/d/10VFd3_e__YUU_llrlyKj7111EH54Q-hF/view?usp=sharing" class="btn btn-secondary" id="downloadResumeBtn">📄 Download Resume</a>
                 </div>
             </div>
@@ -697,23 +1159,23 @@
             <h2 class="fade-in">About Me</h2>
             <div class="about-content">
                 <div class="about-text fade-in">
-                    <p>I'm a passionate <span class="highlight">Software Engineer</span> with 10+ years of experience building scalable web applications and inspired by AI-driven solutions. Recently at <span class="highlight">Rocket Mortgage</span>, I've engineered innovative solutions like an AI-powered chatbot using Amazon Bedrock.</p>
+                    <p>I'm a passionate <span class="highlight">Software Engineer</span> with 10+ years of experience building scalable web applications and leading AI integration efforts. Recently at <span class="highlight">Rocket Mortgage</span>, I engineered intelligent systems like an AI-powered loan chatbot using Amazon Bedrock and AWS Lambda.</p>
                     
-                    <p>I specialize in <span class="highlight">end-to-end system design</span>, leading Agile teams, and bridging traditional development with modern AI tools to create intelligent, efficient solutions. Currently learning other backend frameworks and experimenting with AI agents.</p>
+                    <p>I specialize in <span class="highlight">end-to-end system design</span>, leading agile teams, and bridging classical development (.NET Core, Angular, SQL) with modern LLM pipelines (GraphRAG, Google Gemini, OpenRouter) to deliver state-of-the-art products.</p>
                 </div>
                 
                 <div class="about-visual fade-in">
                     <div class="profile-card">
                         <div class="profile-avatar">PR</div>
                         <div class="profile-name">Prasad Rane</div>
-                        <div class="profile-title">Developer</div>
+                        <div class="profile-title">Software Developer</div>
                         <div class="profile-skills">
                             <span class="mini-skill">C#</span>
                             <span class="mini-skill">Angular</span>
                             <span class="mini-skill">AWS</span>
-                            <span class="mini-skill">AI</span>
-                            <span class="mini-skill">.NET</span>
-                            <span class="mini-skill">Microservices</span>
+                            <span class="mini-skill">AI Agents</span>
+                            <span class="mini-skill">.NET 9</span>
+                            <span class="mini-skill">GraphRAG</span>
                             <span class="mini-skill">Python</span>
                         </div>
                     </div>
@@ -755,6 +1217,7 @@
                         <span class="skill-tag">LINQ</span>
                         <span class="skill-tag">GraphQL</span>
                         <span class="skill-tag">SCSS</span>
+                        <span class="skill-tag">Python</span>
                     </div>
                 </div>
                 
@@ -762,7 +1225,7 @@
                     <div class="skill-title"><span class="skill-icon">⚛️</span> Frameworks & Libraries</div>
                     <div class="skill-tags">
                         <span class="skill-tag">ASP.NET Web API</span>
-                        <span class="skill-tag">Angular 12</span>
+                        <span class="skill-tag">Angular</span>
                         <span class="skill-tag">NgRx</span>
                         <span class="skill-tag">RxJS</span>
                         <span class="skill-tag">SignalR</span>
@@ -776,16 +1239,18 @@
                         <span class="skill-tag">AWS SQS</span>
                         <span class="skill-tag">Terraform</span>
                         <span class="skill-tag">CircleCI</span>
-                        <span class="skill-tag">GitHub Workflows</span>
+                        <span class="skill-tag">GitHub Actions</span>
                     </div>
                 </div>
                 
                 <div class="skill-category">
-                    <div class="skill-title"><span class="skill-icon">🤖</span> AI & Modern Tools</div>
+                    <div class="skill-title"><span class="skill-icon">🤖</span> AI & Agentic Tools</div>
                     <div class="skill-tags">
+                        <span class="skill-tag">GraphRAG</span>
+                        <span class="skill-tag">Google Gemini</span>
                         <span class="skill-tag">Amazon Bedrock</span>
-                        <span class="skill-tag">GitHub Copilot</span>
                         <span class="skill-tag">Claude Code</span>
+                        <span class="skill-tag">LiteLLM</span>
                     </div>
                 </div>
                 
@@ -794,18 +1259,18 @@
                     <div class="skill-tags">
                         <span class="skill-tag">Visual Studio</span>
                         <span class="skill-tag">VS Code</span>
-                        <span class="skill-tag">JetBrains Rider</span>
+                        <span class="skill-tag">Rider</span>
                         <span class="skill-tag">Postman</span>
                         <span class="skill-tag">Jenkins</span>
                     </div>
                 </div>
                 
                 <div class="skill-category">
-                    <div class="skill-title"><span class="skill-icon">📊</span> Monitoring & Analytics</div>
+                    <div class="skill-title"><span class="skill-icon">📊</span> Monitoring & Observability</div>
                     <div class="skill-tags">
                         <span class="skill-tag">Splunk</span>
                         <span class="skill-tag">Dynatrace</span>
-                        <span class="skill-tag">Pager Duty</span>
+                        <span class="skill-tag">PagerDuty</span>
                         <span class="skill-tag">ServiceNow</span>
                     </div>
                 </div>
@@ -880,7 +1345,7 @@
         </div>
     </section>
 
-    <!-- Certifications Section (New) -->
+    <!-- Certifications Section -->
     <section id="certifications" class="section">
         <div class="container">
             <h2 class="fade-in">Certifications</h2>
@@ -898,16 +1363,80 @@
                         </a>
                     </div>
                 </div>
-                <!-- You can add more certification cards here -->
             </div>
         </div>
     </section>
 
-    <!-- Projects Section (renamed from Fun) -->
+    <!-- Projects Section -->
     <section id="projects" class="section">
         <div class="container">
             <h2 class="fade-in">Featured Projects</h2>
             <div class="fun-projects-grid fade-in">
+                <!-- Flagship GraphRAG Project -->
+                <div class="fun-project-card project-card-graphrag">
+                    <div class="project-card-graphrag-grid">
+                        <div class="project-content">
+                            <div class="project-header-row">
+                                <h3 class="project-title">Resume AI Chatbot & Tailoring Engine</h3>
+                                <span class="private-repo-badge">🔒 Private Code</span>
+                            </div>
+                            <p class="project-description">
+                                An agentic resume system powered by Microsoft GraphRAG and Google Gemini. Builds a localized knowledge graph of professional experience to answer recruiter questions and dynamically match/tailor resumes against job descriptions, outputting structured, ATS-optimized PDFs.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-badge">Microsoft GraphRAG</span>
+                                <span class="tech-badge">Google Gemini</span>
+                                <span class="tech-badge">LiteLLM Fallback</span>
+                                <span class="tech-badge">OpenRouter</span>
+                                <span class="tech-badge">Vercel Serverless</span>
+                                <span class="tech-badge">Python</span>
+                            </div>
+                            <div class="project-actions">
+                                <a href="https://prasad-resumes-graphrag.vercel.app/" class="btn btn-primary" target="_blank">Launch App 🚀</a>
+                                <span class="verify-link" style="align-self: center; font-size: 0.85rem; color: var(--text-secondary);">
+                                    Code contains personal resume details.
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Chatbot Widget Mockup -->
+                        <div class="mock-chatbot-widget">
+                            <div class="chat-header">
+                                <div class="chat-bot-info">
+                                    <div class="chat-avatar">AI</div>
+                                    <div>
+                                        <div class="chat-name">Prasad's Agent</div>
+                                        <div class="chat-status">
+                                            <span class="status-dot"></span>
+                                            Active GraphRAG Index
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chat-messages" id="chat-messages-box">
+                                <div class="chat-message chat-message-ai">
+                                    Hi there! I'm Prasad's AI assistant. Click one of the questions below to test the GraphRAG query engine on my resume details!
+                                </div>
+                                <div class="chat-typing-indicator" id="chat-typing-indicator">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </div>
+                            <div class="chat-presets">
+                                <div class="chat-preset-title">Ask about Prasad:</div>
+                                <div class="chat-preset-buttons">
+                                    <button class="chat-preset-btn" onclick="sendMockMessage('ai-work')">AI at Rocket Mortgage 🤖</button>
+                                    <button class="chat-preset-btn" onclick="sendMockMessage('dotnet-exp')">.NET Experience 💻</button>
+                                    <button class="chat-preset-btn" onclick="sendMockMessage('cloud-dev')">Cloud & DevOps ☁️</button>
+                                    <button class="chat-preset-btn" onclick="sendMockMessage('journey')">Career Journey 📄</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pong Game Project -->
                 <div class="fun-project-card">
                     <div class="project-visual">🏓</div>
                     <div class="project-content">
@@ -928,6 +1457,7 @@
                     </div>
                 </div>
                 
+                <!-- ForecastFlow Project -->
                 <div class="fun-project-card">
                     <div class="project-visual">🌤️</div>
                     <div class="project-content">
@@ -938,7 +1468,7 @@
                         </p>
                         <div class="project-tech">
                             <span class="tech-badge">.NET 9.0</span>
-                            <span class="tech-badge">Angular 20.1</span>
+                            <span class="tech-badge">Angular</span>
                             <span class="tech-badge">AWS Lambda</span>
                             <span class="tech-badge">OpenWeatherMap API</span>
                             <span class="tech-badge">Terraform</span>
@@ -957,7 +1487,7 @@
         <div class="container">
             <div class="contact-content fade-in">
                 <h2>Let's Build Something Amazing</h2>
-                <p style="color: var(--text-secondary); margin: 1rem 0;">
+                <p style="color: var(--text-secondary); margin: 1rem 0; font-size: 1.05rem;">
                     Ready to discuss your next project or explore opportunities? I'm always excited to connect with fellow innovators and organizations looking to push the boundaries of technology.
                 </p>
                 <div class="contact-info">
@@ -977,6 +1507,24 @@
 </footer>
 
 <script>
+    // Theme Switcher Logic
+    const themeToggleBtn = document.getElementById('theme-toggle-btn');
+    const body = document.body;
+
+    // Set dark theme as default
+    let currentTheme = localStorage.getItem('theme') || 'dark';
+    body.className = currentTheme + '-theme';
+
+    themeToggleBtn.addEventListener('click', () => {
+        if (body.classList.contains('dark-theme')) {
+            body.className = 'light-theme';
+            localStorage.setItem('theme', 'light');
+        } else {
+            body.className = 'dark-theme';
+            localStorage.setItem('theme', 'dark');
+        }
+    });
+
     // Mobile menu toggle
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
@@ -1008,7 +1556,7 @@
                 entry.target.classList.add('visible');
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.05 });
     fadeElements.forEach(el => observer.observe(el));
 
     // Download resume function
@@ -1029,6 +1577,80 @@
             downloadResume();
         });
     });
+
+    // Mock Chatbot Database & Interaction
+    const mockQADatabase = {
+        'ai-work': {
+            question: "What AI features did Prasad build at Rocket Mortgage?",
+            answer: "At Rocket Mortgage, Prasad engineered an AI-powered loan information chatbot utilizing Amazon Bedrock (Claude Sonnet) and AWS Lambda. He integrated this chatbot with internal servicing platforms to streamline query response times, demonstrating how AI can drive efficiency in complex enterprise workflows."
+        },
+        'dotnet-exp': {
+            question: "What is Prasad's technical stack & experience in .NET?",
+            answer: "Prasad has 10+ years of professional software engineering experience, with a core specialization in the .NET ecosystem. He is highly proficient in C#, ASP.NET Web API, .NET Core/9.0, LINQ, SignalR, and microservices architecture. He has used these technologies to build robust, scalable backends across multiple companies, including London Computer Systems and Rocket Mortgage."
+        },
+        'cloud-dev': {
+            question: "What cloud platforms and tools does he specialize in?",
+            answer: "Prasad is an AWS Certified Cloud Practitioner. His cloud and DevOps expertise includes AWS Lambda, AWS SQS, Amazon Bedrock, Terraform for Infrastructure as Code (IaC), CircleCI, and GitHub Actions. He specializes in designing and deploying cloud-native architectures that are secure, resilient, and cost-efficient."
+        },
+        'journey': {
+            question: "Can you summarize his professional journey?",
+            answer: "Prasad's career spans over a decade of building high-quality software:\n\n1. Rocket Mortgage (2023 - 2025): Software Engineer building AI chatbots and servicing applications with .NET and AWS.\n2. London Computer Systems (2019 - 2023): Software Developer designing real-time frameworks with SignalR and NgRx.\n3. EXFO (2015 - 2018): Software Developer writing MVC Web APIs using TDD and automating 70% of UI tests.\n4. Tanish Infotech (2014 - 2015): Software Developer building .NET web and desktop systems."
+        }
+    };
+
+    let isTyping = false;
+
+    function sendMockMessage(key) {
+        if (isTyping || !mockQADatabase[key]) return;
+
+        isTyping = true;
+        const data = mockQADatabase[key];
+        const messagesBox = document.getElementById('chat-messages-box');
+        const typingIndicator = document.getElementById('chat-typing-indicator');
+        const presetBtns = document.querySelectorAll('.chat-preset-btn');
+
+        // Disable preset buttons
+        presetBtns.forEach(btn => btn.disabled = true);
+
+        // Add user message
+        const userMsgDiv = document.createElement('div');
+        userMsgDiv.className = 'chat-message chat-message-user';
+        userMsgDiv.textContent = data.question;
+        messagesBox.insertBefore(userMsgDiv, typingIndicator);
+        messagesBox.scrollTop = messagesBox.scrollHeight;
+
+        // Show typing indicator
+        typingIndicator.style.display = 'flex';
+        messagesBox.scrollTop = messagesBox.scrollHeight;
+
+        // Simulate network delay and response typing
+        setTimeout(() => {
+            // Hide typing indicator
+            typingIndicator.style.display = 'none';
+
+            // Add bot message container
+            const aiMsgDiv = document.createElement('div');
+            aiMsgDiv.className = 'chat-message chat-message-ai';
+            messagesBox.insertBefore(aiMsgDiv, typingIndicator);
+
+            // Stream typing effect
+            let charIndex = 0;
+            const text = data.answer;
+            const typingInterval = setInterval(() => {
+                if (charIndex < text.length) {
+                    aiMsgDiv.textContent += text.charAt(charIndex);
+                    messagesBox.scrollTop = messagesBox.scrollHeight;
+                    charIndex++;
+                } else {
+                    clearInterval(typingInterval);
+                    isTyping = false;
+                    // Enable preset buttons
+                    presetBtns.forEach(btn => btn.disabled = false);
+                }
+            }, 8); // Fast typing speed
+
+        }, 1000);
+    }
 </script>
 </body>
 </html>
