@@ -721,6 +721,60 @@
             left: -1.25rem;
         }
 
+        /* Progressive disclosure — hidden bullets */
+        .job-description li.exp-hidden {
+            display: none;
+        }
+
+        /* Scrollable expanded area */
+        .job-description.exp-expanded ul {
+            max-height: 260px;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-light) transparent;
+        }
+
+        .job-description.exp-expanded ul::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .job-description.exp-expanded ul::-webkit-scrollbar-thumb {
+            background: var(--accent-light);
+            border-radius: 4px;
+        }
+
+        /* See more / See less toggle button */
+        .exp-toggle-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            margin-top: 0.5rem;
+            padding: 0.25rem 0;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--accent);
+            font-family: var(--font-display);
+            letter-spacing: 0.01em;
+            transition: opacity 0.15s;
+        }
+
+        .exp-toggle-btn:hover {
+            opacity: 0.75;
+        }
+
+        .exp-toggle-btn .material-symbols-outlined {
+            font-size: 1rem;
+            transition: transform 0.2s;
+        }
+
+        .exp-toggle-btn.expanded .material-symbols-outlined {
+            transform: rotate(180deg);
+        }
+
         /* Certifications */
         .certs-grid {
             display: grid;
@@ -1452,16 +1506,16 @@
             <h2 class="fade-in">About Me</h2>
             <div class="about-content">
                 <div class="about-text fade-in">
-                    <p>I'm a passionate <span class="highlight">Software Engineer</span> with 10+ years of experience building scalable web applications and leading AI integration efforts. Recently at <span class="highlight">Rocket Mortgage</span>, I engineered intelligent systems like an AI-powered loan chatbot using Amazon Bedrock and AWS Lambda.</p>
+                    <p>I'm a <span class="highlight">Software Engineer</span> with 10+ years of experience architecting high-throughput distributed systems, cloud-native microservices, and AI-enabled platforms. At <span class="highlight">Rocket Mortgage</span>, I engineered an AI Intent-to-API router using Amazon Bedrock (Claude Sonnet) that automated 70% of policy queries end-to-end — reducing 3–4 minute manual lookups to under 10 seconds.</p>
                     
-                    <p>I specialize in <span class="highlight">end-to-end system design</span>, leading agile teams, and bridging classical development (.NET Core, Angular, SQL) with modern LLM pipelines (GraphRAG, Google Gemini, OpenRouter) to deliver state-of-the-art products.</p>
+                    <p>I specialize in <span class="highlight">end-to-end system design</span>, event-driven architectures (Kafka / AWS MSK), observability, and security modernization — bridging proven .NET Core / Angular backends with modern AI/LLM orchestration (Amazon Bedrock, GraphRAG) to deliver reliable, high-throughput products.</p>
                 </div>
                 
                 <div class="about-visual fade-in">
                     <div class="profile-card">
                         <div class="profile-avatar">PR</div>
                         <div class="profile-name">Prasad Rane</div>
-                        <div class="profile-title">Software Developer</div>
+                        <div class="profile-title">Software Engineer</div>
                         <div class="profile-skills">
                             <span class="mini-skill">C#</span>
                             <span class="mini-skill">Angular</span>
@@ -1489,7 +1543,7 @@
                     <span class="stat-label">Companies</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">15+</span>
+                    <span class="stat-number">30+</span>
                     <span class="stat-label">Technologies</span>
                 </div>
             </div>
@@ -1508,25 +1562,27 @@
                     </div>
                     <div class="skill-tags">
                         <span class="skill-tag">C#</span>
-                        <span class="skill-tag">TypeScript</span>
-                        <span class="skill-tag">SQL</span>
-                        <span class="skill-tag">LINQ</span>
-                        <span class="skill-tag">GraphQL</span>
-                        <span class="skill-tag">SCSS</span>
                         <span class="skill-tag">Python</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">SQL (T-SQL)</span>
                     </div>
                 </div>
                 
                 <div class="skill-category">
                     <div class="skill-title">
                         <span class="material-symbols-outlined">widgets</span>
-                        Frameworks & Libraries
+                        Frameworks &amp; Libraries
                     </div>
                     <div class="skill-tags">
-                        <span class="skill-tag">ASP.NET Web API</span>
-                        <span class="skill-tag">Angular</span>
-                        <span class="skill-tag">NgRx</span>
+                        <span class="skill-tag">.NET 8/9</span>
+                        <span class="skill-tag">ASP.NET Core</span>
+                        <span class="skill-tag">FastAPI</span>
+                        <span class="skill-tag">GraphQL</span>
+                        <span class="skill-tag">Angular (12-18)</span>
                         <span class="skill-tag">RxJS</span>
+                        <span class="skill-tag">NgRx</span>
+                        <span class="skill-tag">CQRS</span>
+                        <span class="skill-tag">OAuth2 / JWT</span>
                         <span class="skill-tag">SignalR</span>
                     </div>
                 </div>
@@ -1534,28 +1590,38 @@
                 <div class="skill-category">
                     <div class="skill-title">
                         <span class="material-symbols-outlined">cloud</span>
-                        Cloud & DevOps
+                        Cloud &amp; DevOps
                     </div>
                     <div class="skill-tags">
+                        <span class="skill-tag">AWS ECS Fargate</span>
                         <span class="skill-tag">AWS Lambda</span>
-                        <span class="skill-tag">AWS SQS</span>
+                        <span class="skill-tag">DynamoDB</span>
+                        <span class="skill-tag">S3 / SQS / SNS</span>
+                        <span class="skill-tag">Amazon MSK (Kafka)</span>
+                        <span class="skill-tag">IAM</span>
                         <span class="skill-tag">Terraform</span>
-                        <span class="skill-tag">CircleCI</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Kubernetes</span>
                         <span class="skill-tag">GitHub Actions</span>
+                        <span class="skill-tag">CircleCI</span>
                     </div>
                 </div>
                 
                 <div class="skill-category">
                     <div class="skill-title">
                         <span class="material-symbols-outlined">psychology</span>
-                        AI & Agentic Tools
+                        AI &amp; Agentic Tools
                     </div>
                     <div class="skill-tags">
+                        <span class="skill-tag">Amazon Bedrock (Claude Sonnet)</span>
+                        <span class="skill-tag">Prompt Engineering</span>
+                        <span class="skill-tag">Guardrails</span>
+                        <span class="skill-tag">Intent-to-API Routing</span>
                         <span class="skill-tag">GraphRAG</span>
-                        <span class="skill-tag">Google Gemini</span>
-                        <span class="skill-tag">Amazon Bedrock</span>
+                        <span class="skill-tag">Vector Indexing</span>
+                        <span class="skill-tag">GitHub Copilot</span>
                         <span class="skill-tag">Claude Code</span>
-                        <span class="skill-tag">LiteLLM</span>
+                        <span class="skill-tag">Google Gemini</span>
                     </div>
                 </div>
                 
@@ -1576,13 +1642,18 @@
                 <div class="skill-category">
                     <div class="skill-title">
                         <span class="material-symbols-outlined">monitoring</span>
-                        Monitoring & Observability
+                        Monitoring &amp; Observability
                     </div>
                     <div class="skill-tags">
-                        <span class="skill-tag">Splunk</span>
                         <span class="skill-tag">Dynatrace</span>
+                        <span class="skill-tag">OpenTelemetry</span>
+                        <span class="skill-tag">Splunk</span>
                         <span class="skill-tag">PagerDuty</span>
-                        <span class="skill-tag">ServiceNow</span>
+                        <span class="skill-tag">Split.io</span>
+                        <span class="skill-tag">WinDbg</span>
+                        <span class="skill-tag">dotnet-dump</span>
+                        <span class="skill-tag">xUnit / Moq</span>
+                        <span class="skill-tag">TDD</span>
                     </div>
                 </div>
             </div>
@@ -1599,13 +1670,20 @@
                     <div class="company-name">Rocket Mortgage</div>
                     <div class="job-title">Software Engineer</div>
                     <div class="job-duration">Jan 2023 – July 2025 | Remote, IL</div>
-                    <div class="job-description">
+                    <div class="job-description" id="exp-rm">
                         <ul>
-                            <li>Engineered an <span class="highlight">AI-powered loan information chatbot</span> using Amazon Bedrock (Claude Sonnet) and AWS Lambda</li>
-                            <li>Built internal and client-facing mortgage servicing applications using .NET APIs, AWS Lambda, SQS, and Angular</li>
-                            <li>Led design discussions, documented architectural decisions, and mentored junior engineers</li>
-                            <li>Leveraged AI tools (GitHub Copilot, Claude Code) to accelerate development processes</li>
+                            <li>Engineered an <span class="highlight">AI Intent-to-API router</span> using Amazon Bedrock (Claude Sonnet), converting natural language mortgage policy queries into structured JSON microservice payloads — automating <span class="highlight">70% of policy queries</span> end-to-end and cutting manual lookups from <span class="highlight">3–4 minutes to under 10 seconds</span> with &lt;450ms latency and 98% accuracy. Implemented strict prompt guardrails and a full S3 audit trail for compliance.</li>
+                            <li>Spearheaded migration of a mission-critical VB.NET underwriting engine to <span class="highlight">AWS ECS Fargate (.NET Core)</span>, cutting infrastructure costs by <span class="highlight">40%</span>, achieving <span class="highlight">99.95% uptime</span>, and reducing support tickets by <span class="highlight">70%</span>. Raised deployments from quarterly to weekly with Terraform IaC and GitHub Actions.</li>
+                            <li>Architected a <span class="highlight">self-service Product Config platform</span> (Angular 14/18, .NET 6/8, DynamoDB), reducing rule deployment from <span class="highlight">14 days to &lt;15 minutes</span> and enabling <span class="highlight">47 self-service production changes</span> in month one.</li>
+                            <li>Re-engineered <span class="highlight">Dynatrace synthetic monitoring</span> across Fannie Mae loan microservices, slashing on-call alert noise by <span class="highlight">80%</span>, improving observability accuracy from 60% to <span class="highlight">98%</span>, and reclaiming <span class="highlight">~20 engineering hours monthly</span>.</li>
+                            <li class="exp-hidden">Established enterprise-wide <span class="highlight">Kafka / AWS MSK governance</span> standards (topic naming, IAM least-privilege, Avro Schema Registry) adopted across <span class="highlight">5 event-driven teams within 3 months</span>, with schema compatibility checks embedded directly into CI/CD.</li>
+                            <li class="exp-hidden">Diagnosed and resolved intermittent <span class="highlight">10–15s transaction stalls</span> in a <span class="highlight">50,000+ daily transaction</span> service using <code>dotnet-counters</code>, <code>dotnet-dump</code>, and WinDbg; implemented <code>SemaphoreSlim</code> throttling for <span class="highlight">99.99% availability</span>.</li>
+                            <li class="exp-hidden">Owned end-to-end <span class="highlight">OAuth2/JWT security migration</span> across 7 dependent teams, resolving <span class="highlight">3 high-priority security audit findings</span> and reducing auth failures by <span class="highlight">60%</span>.</li>
+                            <li class="exp-hidden">Built a one-command <span class="highlight">Docker Compose</span> local dev environment, reducing new-developer setup from <span class="highlight">1–2 weeks to &lt;1 day</span> (&lt;5 minutes container spin-up).</li>
                         </ul>
+                        <button class="exp-toggle-btn" onclick="toggleExp('exp-rm', this)" aria-expanded="false">
+                            See more <span class="material-symbols-outlined">expand_more</span>
+                        </button>
                     </div>
                 </div>
 
@@ -1614,27 +1692,25 @@
                     <div class="company-name">London Computer Systems</div>
                     <div class="job-title">Software Developer</div>
                     <div class="job-duration">Dec 2019 – Jan 2023 | Cincinnati, OH</div>
-                    <div class="job-description">
+                    <div class="job-description" id="exp-lcs">
                         <ul>
-                            <li>Developed a <span class="highlight">reusable SignalR framework</span> for real-time communication features</li>
-                            <li>Designed end-to-end application features including database design and API development</li>
-                            <li>Implemented Angular client-server communication with NgRx state management</li>
-                            <li>Collaborated with cross-functional teams and guided junior developers</li>
+                            <li>Optimized <span class="highlight">SQL Server execution plans</span> for nightly enterprise reports via set-based temp tables and composite indexes, slashing latency from <span class="highlight">45s to &lt;3s</span> and reducing peak CPU load by <span class="highlight">30%</span>.</li>
+                            <li>Engineered fault-tolerant <span class="highlight">payment gateway integrations</span> with exponential-backoff retry and idempotency keys, enabling thousands of tenants online with <span class="highlight">100% graceful failover and zero ledger corruption</span>. Reduced manual check processing by <span class="highlight">25%</span> via an automated payment portal with real-time ledger reconciliation.</li>
+                            <li>Architected a dynamic <span class="highlight">GraphQL query aggregation engine</span> for customer support dashboards in Angular / .NET Core, consolidating <span class="highlight">15+ REST roundtrips into a single query</span> and cutting dashboard load times by <span class="highlight">65%</span>.</li>
+                            <li>Designed a reusable <span class="highlight">event-driven SignalR framework</span> using WebSockets to replace an API polling system, broadcasting delta-only updates to client hubs and improving UI response times by <span class="highlight">25%</span>.</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="experience-item">
                     <div class="experience-dot"></div>
-                    <div class="company-name">EXFO Electro Optical Engineering</div>
+                    <div class="company-name">EXFO Electro-Optical Engineering</div>
                     <div class="job-title">Software Developer</div>
                     <div class="job-duration">Mar 2015 – Jun 2018 | Pune, India</div>
-                    <div class="job-description">
+                    <div class="job-description" id="exp-exfo">
                         <ul>
-                            <li>Developed MVC-based Web APIs using <span class="highlight">Test-Driven Development (TDD)</span></li>
-                            <li>Automated <span class="highlight">70% of UI tests</span> by creating a custom Test Complete framework</li>
-                            <li>Contributed to CI/CD pipeline implementation using Jenkins</li>
-                            <li>Delivered architecture mockups and prototypes during design phases</li>
+                            <li>Eliminated sleep-mode freezing and resume-state <span class="highlight">memory leaks</span> across hundreds of global optical test instruments via memory dump profiling and <code>CancellationTokenSource</code> task aborts, achieving <span class="highlight">zero field-reported recurrences</span>.</li>
+                            <li>Architected an <span class="highlight">offline-first asynchronous C# / REST API sync pipeline</span> with local JSON caching and background retry, replacing a manual USB/email export workflow to achieve <span class="highlight">1-click cloud sync with zero report data loss</span> across hundreds of field tests.</li>
                         </ul>
                     </div>
                 </div>
@@ -1644,15 +1720,15 @@
                     <div class="company-name">Tanish Infotech Solutions</div>
                     <div class="job-title">Software Developer</div>
                     <div class="job-duration">Mar 2014 – Feb 2015 | Pune, India</div>
-                    <div class="job-description">
+                    <div class="job-description" id="exp-tanish">
                         <ul>
-                            <li>Built web and desktop applications on .NET framework</li>
-                            <li>Documented requirements through direct client engagement</li>
-                            <li>Gained foundational experience in software development lifecycle</li>
+                            <li>Delivered custom full-stack <span class="highlight">.NET / SQL Server ERP solutions</span> for commercial SMB clients, automating manual spreadsheet billing to reduce error rates to <span class="highlight">near zero</span> and saving clients <span class="highlight">10+ operational hours weekly</span>.</li>
+                            <li>Designed relational schemas and personally handled IIS deployment and user training, delivering projects from requirements through post-launch support on time and within budget.</li>
                         </ul>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -2073,6 +2149,29 @@
         heroSection.classList.add('active-section');
     }
 
+    // Toggle Experience Bullet "See More / See Less"
+    function toggleExp(cardId, btn) {
+        const card = document.getElementById(cardId);
+        const hiddenItems = card.querySelectorAll('li.exp-hidden');
+        const isExpanded = btn.classList.contains('expanded');
+
+        if (isExpanded) {
+            // Collapse
+            hiddenItems.forEach(li => li.style.display = 'none');
+            card.classList.remove('exp-expanded');
+            btn.classList.remove('expanded');
+            btn.innerHTML = 'See more <span class="material-symbols-outlined">expand_more</span>';
+            btn.setAttribute('aria-expanded', 'false');
+        } else {
+            // Expand
+            hiddenItems.forEach(li => li.style.display = 'list-item');
+            card.classList.add('exp-expanded');
+            btn.classList.add('expanded');
+            btn.innerHTML = 'See less <span class="material-symbols-outlined">expand_more</span>';
+            btn.setAttribute('aria-expanded', 'true');
+        }
+    }
+
     // Toggle Chatbot Expand/Collapse
     function toggleChatbot(collapse) {
         const container = document.getElementById('chatbot-container');
@@ -2095,19 +2194,19 @@
     const mockQADatabase = {
         'ai-work': {
             question: "What AI features did Prasad build at Rocket Mortgage?",
-            answer: "At Rocket Mortgage, Prasad engineered an AI-powered loan information chatbot utilizing Amazon Bedrock (Claude Sonnet) and AWS Lambda. He integrated this chatbot with internal servicing platforms to streamline query response times, demonstrating how AI can drive efficiency in complex enterprise workflows."
+            answer: "At Rocket Mortgage, Prasad engineered an AI Intent-to-API Router using Amazon Bedrock (Claude Sonnet). It converts natural language mortgage policy queries into structured JSON microservice payloads — orchestrating calls across internal APIs to deliver a synthesized answer in under 10 seconds, down from 3–4 minutes of manual multi-system lookups. It automated ~70% of targeted policy queries end-to-end, achieved <450ms routing latency with 98% accuracy, and includes strict prompt guardrails to prevent injection attacks, plus a full S3 audit trail for compliance."
         },
         'dotnet-exp': {
             question: "What is Prasad's technical stack & experience in .NET?",
-            answer: "Prasad has 10+ years of professional software engineering experience, with a core specialization in the .NET ecosystem. He is highly proficient in C#, ASP.NET Web API, .NET Core/9.0, LINQ, SignalR, and microservices architecture. He has used these technologies to build robust, scalable backends across multiple companies, including London Computer Systems and Rocket Mortgage."
+            answer: "Prasad has 10+ years of professional software engineering experience with deep expertise in the .NET ecosystem — C#, .NET 8/9, ASP.NET Core, Web API, and microservices architecture. He also builds Python/FastAPI orchestration layers for AI workloads, designed CQRS-based systems with DynamoDB, and led an OAuth2/JWT security migration across 7 dependent teams. At London Computer Systems he built GraphQL aggregation engines and SQL Server query optimizations; at Rocket Mortgage he drove the VB.NET → ECS Fargate modernization and established enterprise-wide Kafka governance standards."
         },
         'cloud-dev': {
             question: "What cloud platforms and tools does he specialize in?",
-            answer: "Prasad is an AWS Certified Cloud Practitioner. His cloud and DevOps expertise includes AWS Lambda, AWS SQS, Amazon Bedrock, Terraform for Infrastructure as Code (IaC), CircleCI, and GitHub Actions. He specializes in designing and deploying cloud-native architectures that are secure, resilient, and cost-efficient."
+            answer: "Prasad is an AWS Certified Cloud Practitioner with hands-on production experience across the full AWS stack. He migrated a VB.NET monolith to AWS ECS Fargate, cutting infrastructure costs by 40% while maintaining 99.95% uptime. His cloud toolkit includes ECS Fargate, Lambda, DynamoDB, S3, SQS/SNS, Amazon MSK (Kafka), IAM, and CloudWatch — with Terraform IaC and GitHub Actions for CI/CD. He also established enterprise-wide Kafka/AWS MSK governance standards adopted across 5 engineering teams, and containerized local dev environments with Docker Compose."
         },
         'journey': {
             question: "Can you summarize his professional journey?",
-            answer: "Prasad's career spans over a decade of building high-quality software:\n\n1. Rocket Mortgage (2023 - 2025): Software Engineer building AI chatbots and servicing applications with .NET and AWS.\n2. London Computer Systems (2019 - 2023): Software Developer designing real-time frameworks with SignalR and NgRx.\n3. EXFO (2015 - 2018): Software Developer writing MVC Web APIs using TDD and automating 70% of UI tests.\n4. Tanish Infotech (2014 - 2015): Software Developer building .NET web and desktop systems."
+            answer: "Prasad's career spans over a decade of building high-quality software:\n\n1. Rocket Mortgage (2023–2025): Software Engineer building an AI Intent-to-API router (Amazon Bedrock), migrating a VB.NET underwriting engine to AWS ECS Fargate (40% cost cut), and establishing enterprise Kafka governance across 5 teams.\n2. London Computer Systems (2019–2023): Software Developer optimizing SQL Server reports (45s → <3s), building payment gateway integrations (zero ledger corruption), and architecting a GraphQL engine that cut dashboard load times 65%.\n3. EXFO Electro-Optical Engineering (2015–2018): Software Developer resolving sleep-mode memory leaks across hundreds of optical test instruments and building an offline-first REST API sync pipeline for field engineers.\n4. Tanish Infotech (2014–2015): Software Developer delivering full-stack .NET/SQL Server ERP solutions, saving clients 10+ operational hours weekly."
         }
     };
 
