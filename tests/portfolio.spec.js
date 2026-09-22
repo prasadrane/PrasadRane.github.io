@@ -157,5 +157,36 @@ test.describe('Portfolio Page Tests', () => {
         const isLenisInitialized = await page.evaluate(() => typeof window.lenis !== 'undefined');
         expect(isLenisInitialized).toBe(true);
     });
+
+    test('Color theme tokens match orange-yellow amber palette and legacy blue is removed', async ({ page }) => {
+        const rootStyles = await page.evaluate(() => {
+            const root = document.documentElement;
+            const style = getComputedStyle(root);
+            return {
+                lightPrimary: style.getPropertyValue('--m3-light-primary').trim(),
+                darkPrimary: style.getPropertyValue('--m3-dark-primary').trim(),
+                lightPrimaryContainer: style.getPropertyValue('--m3-light-primary-container').trim()
+            };
+        });
+
+        // Ensure legacy blue tokens are replaced
+        expect(rootStyles.lightPrimary).not.toBe('#0b57d0');
+        expect(rootStyles.darkPrimary).not.toBe('#a8c7fa');
+
+        // Verify warm amber/orange primary tokens
+        expect(rootStyles.lightPrimary.toLowerCase()).toBe('#e88800');
+        expect(rootStyles.darkPrimary.toLowerCase()).toBe('#fbbf24');
+    });
+
+    test('Profile photo is rendered in About Me card and loads successfully', async ({ page }) => {
+        const profileImg = page.locator('.profile-avatar img, img.profile-avatar-img');
+        await expect(profileImg).toBeVisible();
+        await expect(profileImg).toHaveAttribute('src', /assets\/images\/prasad-photo\.jpg/);
+        await expect(profileImg).toHaveAttribute('alt', /Prasad Rane/i);
+
+        // Check that the image actually loaded successfully
+        const isLoaded = await profileImg.evaluate((img) => img.complete && img.naturalWidth > 0);
+        expect(isLoaded).toBe(true);
+    });
 });
 

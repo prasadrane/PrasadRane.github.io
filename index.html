@@ -28,45 +28,45 @@
     <style>
         /* ---------- Material Design 3 Color Tokens ---------- */
         :root {
-            /* M3 Light Palette */
-            --m3-light-primary: #0b57d0;
+            /* M3 Light Palette (Warm Solar Orange & Golden Amber) */
+            --m3-light-primary: #e88800;
             --m3-light-on-primary: #ffffff;
-            --m3-light-primary-container: #d3e3fd;
-            --m3-light-on-primary-container: #041e49;
-            --m3-light-secondary: #00639b;
+            --m3-light-primary-container: #ffedd5;
+            --m3-light-on-primary-container: #7c2d12;
+            --m3-light-secondary: #d97706;
             --m3-light-on-secondary: #ffffff;
-            --m3-light-secondary-container: #c2e7ff;
-            --m3-light-on-secondary-container: #001d35;
-            --m3-light-surface: #f8fafd;
+            --m3-light-secondary-container: #fef3c7;
+            --m3-light-on-secondary-container: #451a03;
+            --m3-light-surface: #fffdfa;
             --m3-light-on-surface: #1f1f1f;
             --m3-light-surface-container: #ffffff;
-            --m3-light-on-surface-variant: #44474e;
-            --m3-light-outline: #74777f;
-            --m3-light-outline-variant: #c4c6cf;
-            --m3-light-background: #f8fafd;
+            --m3-light-on-surface-variant: #574d44;
+            --m3-light-outline: #8c7e73;
+            --m3-light-outline-variant: #e6ded6;
+            --m3-light-background: #fffcf7;
             --m3-light-on-background: #1f1f1f;
-            --m3-light-glow: rgba(11, 87, 208, 0.04);
-            --m3-light-glow-strong: rgba(11, 87, 208, 0.15);
+            --m3-light-glow: rgba(232, 136, 0, 0.06);
+            --m3-light-glow-strong: rgba(232, 136, 0, 0.20);
 
-            /* M3 Dark Palette */
-            --m3-dark-primary: #a8c7fa;
-            --m3-dark-on-primary: #062e6f;
-            --m3-dark-primary-container: #0842a0;
-            --m3-dark-on-primary-container: #d3e3fd;
-            --m3-dark-secondary: #7fcfff;
-            --m3-dark-on-secondary: #003355;
-            --m3-dark-secondary-container: #004b77;
-            --m3-dark-on-secondary-container: #c2e7ff;
-            --m3-dark-surface: #0f131c;
-            --m3-dark-on-surface: #e2e2e9;
-            --m3-dark-surface-container: #1b202e;
-            --m3-dark-on-surface-variant: #c4c6cf;
-            --m3-dark-outline: #8e9196;
-            --m3-dark-outline-variant: #44474e;
-            --m3-dark-background: #0b0e14;
-            --m3-dark-on-background: #e2e2e9;
-            --m3-dark-glow: rgba(168, 199, 250, 0.08);
-            --m3-dark-glow-strong: rgba(168, 199, 250, 0.25);
+            /* M3 Dark Palette (Radiant Gold & Obsidian Warm Slate) */
+            --m3-dark-primary: #fbbf24;
+            --m3-dark-on-primary: #431407;
+            --m3-dark-primary-container: #78350f;
+            --m3-dark-on-primary-container: #fef3c7;
+            --m3-dark-secondary: #fb923c;
+            --m3-dark-on-secondary: #451a03;
+            --m3-dark-secondary-container: #9a3412;
+            --m3-dark-on-secondary-container: #ffedd5;
+            --m3-dark-surface: #14110e;
+            --m3-dark-on-surface: #f3ede8;
+            --m3-dark-surface-container: #1e1914;
+            --m3-dark-on-surface-variant: #d4c7bd;
+            --m3-dark-outline: #9c8e82;
+            --m3-dark-outline-variant: #52473e;
+            --m3-dark-background: #0d0b09;
+            --m3-dark-on-background: #f3ede8;
+            --m3-dark-glow: rgba(251, 191, 36, 0.10);
+            --m3-dark-glow-strong: rgba(232, 136, 0, 0.30);
             
             --font-display: 'Outfit', sans-serif;
             --font-sans: 'Roboto', sans-serif;
@@ -88,9 +88,9 @@
             --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -1px rgba(0,0,0,0.08);
             --glow: var(--m3-light-glow);
             --glow-strong: var(--m3-light-glow-strong);
-            --nav-bg: rgba(248, 250, 253, 0.85);
-            --gradient-text: linear-gradient(135deg, var(--m3-light-on-background), var(--m3-light-primary));
-            --bg-gradient: linear-gradient(180deg, #f8fafd 0%, #eef3fc 35%, #e3ecfa 70%, #f8fafd 100%);
+            --nav-bg: rgba(255, 252, 247, 0.88);
+            --gradient-text: linear-gradient(135deg, var(--m3-light-on-background), #d97706 60%, var(--m3-light-primary) 100%);
+            --bg-gradient: linear-gradient(180deg, #fffcf7 0%, #fff7ed 35%, #fef3c7 70%, #fffcf7 100%);
             --bot-eye-color: #ffffff;
         }
 
@@ -109,10 +109,10 @@
             --shadow-md: 0 8px 12px -3px rgba(0,0,0,0.5), 0 4px 6px -2px rgba(0,0,0,0.5);
             --glow: var(--m3-dark-glow);
             --glow-strong: var(--m3-dark-glow-strong);
-            --nav-bg: rgba(11, 14, 20, 0.85);
-            --gradient-text: linear-gradient(135deg, #e2e2e9, var(--m3-dark-primary));
-            --bg-gradient: linear-gradient(180deg, #0b0e14 0%, #0f131c 30%, #151922 60%, #0b0e14 100%);
-            --bot-eye-color: #0b0e14;
+            --nav-bg: rgba(13, 11, 9, 0.88);
+            --gradient-text: linear-gradient(135deg, #f3ede8, var(--m3-dark-primary) 70%, #fb923c 100%);
+            --bg-gradient: linear-gradient(180deg, #0d0b09 0%, #14110e 30%, #1c1712 60%, #0d0b09 100%);
+            --bot-eye-color: #0d0b09;
         }
 
         * {
@@ -387,7 +387,7 @@
             width: 320px;
             height: 320px;
             border-radius: 50%;
-            background: #8b5cf6;
+            background: #f59e0b;
             filter: blur(120px);
             opacity: var(--glow-strong);
             z-index: -1;
@@ -399,7 +399,7 @@
 
         /* Alternate colors on even sections for visual variety */
         .section:nth-of-type(even)::before {
-            background: #8b5cf6;
+            background: #f59e0b;
         }
         .section:nth-of-type(even)::after {
             background: var(--accent);
@@ -467,7 +467,7 @@
         }
 
         body.dark-theme .btn-primary {
-            color: #062e6f; /* Dark contrast */
+            color: #431407; /* Dark contrast */
             font-weight: 600;
         }
 
@@ -536,19 +536,31 @@
         }
 
         .profile-avatar {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             background: var(--accent-light);
-            color: var(--accent);
-            border-radius: 100px;
+            border-radius: 50%;
             margin: 0 auto 1.25rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            font-weight: 700;
-            box-shadow: var(--shadow-sm);
-            font-family: var(--font-display);
+            box-shadow: 0 4px 16px var(--glow-strong);
+            border: 3px solid var(--accent);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .profile-avatar-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+            transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1);
+        }
+
+        .profile-card:hover .profile-avatar-img {
+            transform: scale(1.06);
         }
 
         .profile-name {
@@ -1001,7 +1013,7 @@
         }
 
         body.dark-theme .chatbot-launcher-btn:hover {
-            color: #062e6f;
+            color: #431407;
         }
 
         .mock-chatbot-widget-container.collapsed .chatbot-launcher-btn {
@@ -1280,7 +1292,7 @@
         }
 
         body.dark-theme .chat-input-bar button {
-            color: #062e6f;
+            color: #431407;
         }
 
         .chat-input-bar button:hover:not(:disabled) {
@@ -1513,7 +1525,9 @@
                 
                 <div class="about-visual fade-in">
                     <div class="profile-card">
-                        <div class="profile-avatar">PR</div>
+                        <div class="profile-avatar">
+                            <img src="assets/images/prasad-photo.jpg" alt="Prasad Rane" class="profile-avatar-img" width="120" height="120" loading="eager">
+                        </div>
                         <div class="profile-name">Prasad Rane</div>
                         <div class="profile-title">Software Engineer</div>
                         <div class="profile-skills">
