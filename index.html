@@ -394,9 +394,27 @@
                 margin-right: auto;
                 padding-right: 420px;
             }
+
+            /* With the chat closed, there's no panel to make room for: center the content */
+            body:has(.mock-chatbot-widget-container.collapsed) .section .container,
+            body:has(.mock-chatbot-widget-container.collapsed) .hero .container {
+                max-width: 1100px;
+                margin-left: auto;
+                padding-right: 1.5rem;
+            }
+
+            /* Hero fills the first screen so there's no empty band before the next section fades in */
+            .hero {
+                min-height: calc(100vh - 70px);
+            }
         }
 
         @media (max-width: 992px) {
+            /* Room at the end of the page so the floating chat button never sits on top of the last lines */
+            footer {
+                padding-bottom: 6rem;
+            }
+
             .section, .hero {
                 min-height: auto;
                 padding: 4.5rem 0;
@@ -475,10 +493,46 @@
             font-weight: 400;
         }
 
+        .hero-photo {
+            width: 112px;
+            height: 112px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            margin-bottom: 1.5rem;
+            border: 3px solid var(--accent);
+            box-shadow: 0 4px 16px var(--glow-strong);
+        }
+
+        .hero-proof {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            padding: 0.85rem 1.1rem;
+            margin-bottom: 2.25rem;
+            background: var(--accent-light);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            color: var(--text-primary);
+            font-size: 0.975rem;
+            line-height: 1.55;
+        }
+
+        .hero-proof strong {
+            color: var(--accent);
+            font-weight: 650;
+        }
+
+        .hero-proof .material-symbols-outlined {
+            color: var(--accent);
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
         .hero-description {
             color: var(--text-secondary);
             font-size: 1.05rem;
-            margin-bottom: 2.5rem;
+            margin-bottom: 1.5rem;
             line-height: 1.7;
         }
 
@@ -662,6 +716,7 @@
         }
 
         .stat-number {
+            display: block;
             font-size: 2.25rem;
             font-weight: 700;
             color: var(--accent);
@@ -847,6 +902,27 @@
             flex-direction: column;
         }
 
+        /* A lone certification reads as a wide row instead of a small card next to empty space */
+        .certs-grid:has(> .cert-card:only-child) {
+            grid-template-columns: 1fr;
+        }
+
+        .cert-card:only-child {
+            flex-direction: row;
+            align-items: center;
+            gap: 1.75rem;
+        }
+
+        .cert-card:only-child .cert-icon-img {
+            width: 96px;
+            height: 96px;
+            margin-bottom: 0;
+        }
+
+        .cert-card:only-child .cert-date {
+            margin-bottom: 0.75rem;
+        }
+
         .cert-icon-img {
             width: 64px;
             height: 64px;
@@ -899,15 +975,33 @@
 
         /* Featured Projects Grid */
         .fun-projects-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 2.5rem;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* In two columns the icon sits above the text; the flagship project spans the full row and keeps it beside */
+        .fun-projects-grid .fun-project-card {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .fun-projects-grid .project-card-graphrag {
+            grid-column: 1 / -1;
+            grid-template-columns: auto 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 1100px) {
+            .fun-projects-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .fun-project-card {
             display: grid;
             grid-template-columns: auto 1fr;
-            gap: 2rem;
+            gap: 1.5rem;
             align-items: start;
         }
 
@@ -1272,6 +1366,45 @@
             gap: 0.5rem;
         }
 
+        .chat-presets-toggle {
+            display: none;
+            align-self: flex-start;
+            align-items: center;
+            gap: 0.25rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 0.35rem 0.75rem;
+            border-radius: 8px;
+            font-size: 0.775rem;
+            font-weight: 550;
+            color: var(--text-primary);
+            cursor: pointer;
+            font-family: var(--font-display);
+        }
+
+        .chat-presets-toggle:hover {
+            border-color: var(--accent);
+            background: var(--accent-light);
+            color: var(--accent);
+        }
+
+        .chat-presets-toggle .material-symbols-outlined {
+            font-size: 1rem;
+        }
+
+        .chat-presets.compact {
+            padding: 0.6rem 1.25rem;
+        }
+
+        .chat-presets.compact .chat-presets-toggle {
+            display: inline-flex;
+        }
+
+        .chat-presets.compact .chat-preset-title,
+        .chat-presets.compact .chat-preset-buttons {
+            display: none;
+        }
+
         .chat-preset-title {
             font-size: 0.725rem;
             font-weight: 700;
@@ -1470,7 +1603,8 @@
             .about-stats {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .fun-project-card {
+            .fun-project-card,
+            .fun-projects-grid .project-card-graphrag {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
@@ -1558,11 +1692,16 @@
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
+                <img src="assets/images/prasad-photo.webp" alt="Prasad Rane" class="hero-photo" width="112" height="112" loading="eager" decoding="async">
                 <h1 class="hero-title">Prasad Rane</h1>
                 <div class="hero-subtitle">Software Engineer & AI Enthusiast</div>
                 <p class="hero-description">
                     Building next-generation applications with 10+ years of expertise in .NET, Angular, AWS, and AI technologies. 
                     Passionate about merging robust backends with modern AI agents to create fast, scalable software solutions.
+                </p>
+                <p class="hero-proof">
+                    <span class="material-symbols-outlined">verified</span>
+                    <span>Shipped an Amazon Bedrock AI router at Rocket Mortgage: <strong>70% of policy queries automated</strong>, answers in under 10 seconds.</span>
                 </p>
                 <div class="cta-buttons">
                     <a href="#experience" class="btn btn-primary">
@@ -1615,16 +1754,16 @@
                     <span class="stat-label">Years Experience</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">35+</span>
-                    <span class="stat-label">Projects Completed</span>
+                    <span class="stat-number">70%</span>
+                    <span class="stat-label">Policy queries automated with AI</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">4</span>
-                    <span class="stat-label">Companies</span>
+                    <span class="stat-number">40%</span>
+                    <span class="stat-label">Lower infrastructure cost</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">30+</span>
-                    <span class="stat-label">Technologies</span>
+                    <span class="stat-number">99.95%</span>
+                    <span class="stat-label">Uptime after cloud migration</span>
                 </div>
             </div>
         </div>
@@ -1752,14 +1891,14 @@
                     <div class="job-duration">Jan 2023 – July 2025 | Remote, IL</div>
                     <div class="job-description" id="exp-rm">
                         <ul>
-                            <li>Engineered an <span class="highlight">AI Intent-to-API router</span> using Amazon Bedrock (Claude Sonnet), converting natural language mortgage policy queries into structured JSON microservice payloads — automating <span class="highlight">70% of policy queries</span> end-to-end and cutting manual lookups from <span class="highlight">3–4 minutes to under 10 seconds</span> with &lt;450ms latency and 98% accuracy. Implemented strict prompt guardrails and a full S3 audit trail for compliance.</li>
-                            <li>Spearheaded migration of a mission-critical VB.NET underwriting engine to <span class="highlight">AWS ECS Fargate (.NET Core)</span>, cutting infrastructure costs by <span class="highlight">40%</span>, achieving <span class="highlight">99.95% uptime</span>, and reducing support tickets by <span class="highlight">70%</span>. Raised deployments from quarterly to weekly with Terraform IaC and GitHub Actions.</li>
-                            <li>Architected a <span class="highlight">self-service Product Config platform</span> (Angular 14/18, .NET 6/8, DynamoDB), reducing rule deployment from <span class="highlight">14 days to &lt;15 minutes</span> and enabling <span class="highlight">47 self-service production changes</span> in month one.</li>
-                            <li>Re-engineered <span class="highlight">Dynatrace synthetic monitoring</span> across Fannie Mae loan microservices, slashing on-call alert noise by <span class="highlight">80%</span>, improving observability accuracy from 60% to <span class="highlight">98%</span>, and reclaiming <span class="highlight">~20 engineering hours monthly</span>.</li>
-                            <li class="exp-hidden">Established enterprise-wide <span class="highlight">Kafka / AWS MSK governance</span> standards (topic naming, IAM least-privilege, Avro Schema Registry) adopted across <span class="highlight">5 event-driven teams within 3 months</span>, with schema compatibility checks embedded directly into CI/CD.</li>
-                            <li class="exp-hidden">Diagnosed and resolved intermittent <span class="highlight">10–15s transaction stalls</span> in a <span class="highlight">50,000+ daily transaction</span> service using <code>dotnet-counters</code>, <code>dotnet-dump</code>, and WinDbg; implemented <code>SemaphoreSlim</code> throttling for <span class="highlight">99.99% availability</span>.</li>
-                            <li class="exp-hidden">Owned end-to-end <span class="highlight">OAuth2/JWT security migration</span> across 7 dependent teams, resolving <span class="highlight">3 high-priority security audit findings</span> and reducing auth failures by <span class="highlight">60%</span>.</li>
-                            <li class="exp-hidden">Built a one-command <span class="highlight">Docker Compose</span> local dev environment, reducing new-developer setup from <span class="highlight">1–2 weeks to &lt;1 day</span> (&lt;5 minutes container spin-up).</li>
+                            <li>Engineered an AI Intent-to-API router using Amazon Bedrock (Claude Sonnet), converting natural language mortgage policy queries into structured JSON microservice payloads — automating <span class="highlight">70% of policy queries</span> end-to-end and cutting manual lookups from 3–4 minutes to under 10 seconds with &lt;450ms latency and 98% accuracy. Implemented strict prompt guardrails and a full S3 audit trail for compliance.</li>
+                            <li>Spearheaded migration of a mission-critical VB.NET underwriting engine to AWS ECS Fargate (.NET Core), cutting infrastructure costs by <span class="highlight">40%</span>, achieving 99.95% uptime, and reducing support tickets by 70%. Raised deployments from quarterly to weekly with Terraform IaC and GitHub Actions.</li>
+                            <li>Architected a self-service Product Config platform (Angular 14/18, .NET 6/8, DynamoDB), reducing rule deployment from <span class="highlight">14 days to &lt;15 minutes</span> and enabling 47 self-service production changes in month one.</li>
+                            <li>Re-engineered Dynatrace synthetic monitoring across Fannie Mae loan microservices, slashing on-call alert noise by <span class="highlight">80%</span>, improving observability accuracy from 60% to 98%, and reclaiming ~20 engineering hours monthly.</li>
+                            <li class="exp-hidden">Established enterprise-wide Kafka / AWS MSK governance standards (topic naming, IAM least-privilege, Avro Schema Registry) adopted across <span class="highlight">5 event-driven teams within 3 months</span>, with schema compatibility checks embedded directly into CI/CD.</li>
+                            <li class="exp-hidden">Diagnosed and resolved intermittent 10–15s transaction stalls in a 50,000+ daily transaction service using <code>dotnet-counters</code>, <code>dotnet-dump</code>, and WinDbg; implemented <code>SemaphoreSlim</code> throttling for <span class="highlight">99.99% availability</span>.</li>
+                            <li class="exp-hidden">Owned end-to-end OAuth2/JWT security migration across 7 dependent teams, resolving 3 high-priority security audit findings and reducing auth failures by <span class="highlight">60%</span>.</li>
+                            <li class="exp-hidden">Built a one-command Docker Compose local dev environment, reducing new-developer setup from <span class="highlight">1–2 weeks to &lt;1 day</span> (&lt;5 minutes container spin-up).</li>
                         </ul>
                         <button class="exp-toggle-btn" onclick="toggleExp('exp-rm', this)" aria-expanded="false">
                             See more <span class="material-symbols-outlined">expand_more</span>
@@ -1774,10 +1913,10 @@
                     <div class="job-duration">Dec 2019 – Jan 2023 | Cincinnati, OH</div>
                     <div class="job-description" id="exp-lcs">
                         <ul>
-                            <li>Optimized <span class="highlight">SQL Server execution plans</span> for nightly enterprise reports via set-based temp tables and composite indexes, slashing latency from <span class="highlight">45s to &lt;3s</span> and reducing peak CPU load by <span class="highlight">30%</span>.</li>
-                            <li>Engineered fault-tolerant <span class="highlight">payment gateway integrations</span> with exponential-backoff retry and idempotency keys, enabling thousands of tenants online with <span class="highlight">100% graceful failover and zero ledger corruption</span>. Reduced manual check processing by <span class="highlight">25%</span> via an automated payment portal with real-time ledger reconciliation.</li>
-                            <li>Architected a dynamic <span class="highlight">GraphQL query aggregation engine</span> for customer support dashboards in Angular / .NET Core, consolidating <span class="highlight">15+ REST roundtrips into a single query</span> and cutting dashboard load times by <span class="highlight">65%</span>.</li>
-                            <li>Designed a reusable <span class="highlight">event-driven SignalR framework</span> using WebSockets to replace an API polling system, broadcasting delta-only updates to client hubs and improving UI response times by <span class="highlight">25%</span>.</li>
+                            <li>Optimized SQL Server execution plans for nightly enterprise reports via set-based temp tables and composite indexes, slashing latency from <span class="highlight">45s to &lt;3s</span> and reducing peak CPU load by 30%.</li>
+                            <li>Engineered fault-tolerant payment gateway integrations with exponential-backoff retry and idempotency keys, enabling thousands of tenants online with <span class="highlight">100% graceful failover and zero ledger corruption</span>. Reduced manual check processing by 25% via an automated payment portal with real-time ledger reconciliation.</li>
+                            <li>Architected a dynamic GraphQL query aggregation engine for customer support dashboards in Angular / .NET Core, consolidating 15+ REST roundtrips into a single query and cutting dashboard load times by <span class="highlight">65%</span>.</li>
+                            <li>Designed a reusable event-driven SignalR framework using WebSockets to replace an API polling system, broadcasting delta-only updates to client hubs and improving UI response times by <span class="highlight">25%</span>.</li>
                         </ul>
                     </div>
                 </div>
@@ -1789,8 +1928,8 @@
                     <div class="job-duration">Mar 2015 – Jun 2018 | Pune, India</div>
                     <div class="job-description" id="exp-exfo">
                         <ul>
-                            <li>Eliminated sleep-mode freezing and resume-state <span class="highlight">memory leaks</span> across hundreds of global optical test instruments via memory dump profiling and <code>CancellationTokenSource</code> task aborts, achieving <span class="highlight">zero field-reported recurrences</span>.</li>
-                            <li>Architected an <span class="highlight">offline-first asynchronous C# / REST API sync pipeline</span> with local JSON caching and background retry, replacing a manual USB/email export workflow to achieve <span class="highlight">1-click cloud sync with zero report data loss</span> across hundreds of field tests.</li>
+                            <li>Eliminated sleep-mode freezing and resume-state memory leaks across hundreds of global optical test instruments via memory dump profiling and <code>CancellationTokenSource</code> task aborts, achieving <span class="highlight">zero field-reported recurrences</span>.</li>
+                            <li>Architected an offline-first asynchronous C# / REST API sync pipeline with local JSON caching and background retry, replacing a manual USB/email export workflow to achieve <span class="highlight">1-click cloud sync with zero report data loss</span> across hundreds of field tests.</li>
                         </ul>
                     </div>
                 </div>
@@ -1802,7 +1941,7 @@
                     <div class="job-duration">Mar 2014 – Feb 2015 | Pune, India</div>
                     <div class="job-description" id="exp-tanish">
                         <ul>
-                            <li>Delivered custom full-stack <span class="highlight">.NET / SQL Server ERP solutions</span> for commercial SMB clients, automating manual spreadsheet billing to reduce error rates to <span class="highlight">near zero</span> and saving clients <span class="highlight">10+ operational hours weekly</span>.</li>
+                            <li>Delivered custom full-stack .NET / SQL Server ERP solutions for commercial SMB clients, automating manual spreadsheet billing to reduce error rates to near zero and saving clients <span class="highlight">10+ operational hours weekly</span>.</li>
                             <li>Designed relational schemas and personally handled IIS deployment and user training, delivering projects from requirements through post-launch support on time and within budget.</li>
                         </ul>
                     </div>
@@ -1821,6 +1960,7 @@
                     <a href="https://www.credly.com/badges/337a36b4-0285-460e-b115-2023040ba6b5/public_url" target="_blank" rel="noopener noreferrer">
                         <img src="./aws-certified-cloud-practitioner-badge.png" alt="AWS Certified Cloud Practitioner Badge" class="cert-icon-img">
                     </a>
+                    <div class="cert-info">
                     <div class="cert-title">AWS Certified Cloud Practitioner</div>
                     <div class="cert-issuer">Amazon Web Services Training and Certification</div>
                     <div class="cert-date">Issued: Apr 2026 | Expires: Apr 2029</div>
@@ -1829,6 +1969,7 @@
                             Verify on Credly
                             <span class="material-symbols-outlined">open_in_new</span>
                         </a>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -1840,6 +1981,42 @@
         <div class="container">
             <h2 class="fade-in">Featured Projects</h2>
             <div class="fun-projects-grid fade-in">
+                <!-- Flagship GraphRAG Project -->
+                <div class="fun-project-card project-card-graphrag">
+                    <div class="project-visual">
+                        <span class="material-symbols-outlined">psychology</span>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header-row">
+                            <h3 class="project-title">Resume AI Chatbot &amp; Tailoring Engine</h3>
+                            <span class="private-repo-badge">
+                                <span class="material-symbols-outlined">lock</span>
+                                Private Code
+                            </span>
+                        </div>
+                        <p class="project-description">
+                            An agentic resume system powered by Microsoft GraphRAG and Google Gemini. Builds a localized knowledge graph of professional experience to answer recruiter questions and dynamically match/tailor resumes against job descriptions, outputting structured, ATS-optimized PDFs.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Microsoft GraphRAG</span>
+                            <span class="tech-badge">Google Gemini</span>
+                            <span class="tech-badge">LiteLLM Fallback</span>
+                            <span class="tech-badge">OpenRouter</span>
+                            <span class="tech-badge">Vercel Serverless</span>
+                            <span class="tech-badge">Python</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://prasad-resumes-graphrag.vercel.app/" class="btn btn-primary" target="_blank">
+                                Launch App
+                                <span class="material-symbols-outlined">rocket_launch</span>
+                            </a>
+                            <span class="verify-link" style="align-self: center; font-size: 0.85rem; color: var(--text-secondary);">
+                                Code contains personal resume details.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Content Machine Project -->
                 <div class="fun-project-card">
                     <div class="project-visual">
@@ -1931,42 +2108,6 @@
                                 View Code
                                 <span class="material-symbols-outlined">folder</span>
                             </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Flagship GraphRAG Project -->
-                <div class="fun-project-card project-card-graphrag">
-                    <div class="project-visual">
-                        <span class="material-symbols-outlined">psychology</span>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-header-row">
-                            <h3 class="project-title">Resume AI Chatbot &amp; Tailoring Engine</h3>
-                            <span class="private-repo-badge">
-                                <span class="material-symbols-outlined">lock</span>
-                                Private Code
-                            </span>
-                        </div>
-                        <p class="project-description">
-                            An agentic resume system powered by Microsoft GraphRAG and Google Gemini. Builds a localized knowledge graph of professional experience to answer recruiter questions and dynamically match/tailor resumes against job descriptions, outputting structured, ATS-optimized PDFs.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-badge">Microsoft GraphRAG</span>
-                            <span class="tech-badge">Google Gemini</span>
-                            <span class="tech-badge">LiteLLM Fallback</span>
-                            <span class="tech-badge">OpenRouter</span>
-                            <span class="tech-badge">Vercel Serverless</span>
-                            <span class="tech-badge">Python</span>
-                        </div>
-                        <div class="project-actions">
-                            <a href="https://prasad-resumes-graphrag.vercel.app/" class="btn btn-primary" target="_blank">
-                                Launch App
-                                <span class="material-symbols-outlined">rocket_launch</span>
-                            </a>
-                            <span class="verify-link" style="align-self: center; font-size: 0.85rem; color: var(--text-secondary);">
-                                Code contains personal resume details.
-                            </span>
                         </div>
                     </div>
                 </div>
@@ -2075,9 +2216,13 @@
                     <span></span>
                 </div>
             </div>
-            <div class="chat-presets">
+            <div class="chat-presets" id="chat-presets">
+                <button type="button" class="chat-presets-toggle" onclick="setChatPresetsCompact(false)" aria-controls="chat-preset-buttons" aria-expanded="false">
+                    More questions
+                    <span class="material-symbols-outlined">expand_less</span>
+                </button>
                 <div class="chat-preset-title">Ask about Prasad:</div>
-                <div class="chat-preset-buttons">
+                <div class="chat-preset-buttons" id="chat-preset-buttons">
                     <button class="chat-preset-btn" onclick="sendMockMessage('ai-work')">AI at Rocket Mortgage 🤖</button>
                     <button class="chat-preset-btn" onclick="sendMockMessage('dotnet-exp')">.NET Experience 💻</button>
                     <button class="chat-preset-btn" onclick="sendMockMessage('cloud-dev')">Cloud & DevOps ☁️</button>
@@ -2113,12 +2258,13 @@
 
 <script>
     // Initialize Lenis Smooth Scrolling
-    const lenis = new Lenis({
+    // (skipped if the CDN script fails to load, e.g. blocked by an ad blocker, so the rest of the page still works)
+    const lenis = typeof Lenis === 'function' ? new Lenis({
         duration: 1.2,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         gestureOrientation: 'vertical',
         smoothWheel: true,
-    });
+    }) : null;
     window.lenis = lenis;
 
     // Use requestAnimationFrame to update Lenis on every frame
@@ -2126,7 +2272,7 @@
         lenis.raf(time);
         requestAnimationFrame(raf);
     }
-    requestAnimationFrame(raf);
+    if (lenis) requestAnimationFrame(raf);
 
     // Theme Switcher Logic
     const themeToggleBtn = document.getElementById('theme-toggle-btn');
@@ -2177,7 +2323,11 @@
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                lenis.scrollTo(target, { offset: -70 });
+                if (lenis) {
+                    lenis.scrollTo(target, { offset: -70 });
+                } else {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
             }
         });
     });
@@ -2275,10 +2425,10 @@
         }
     }
 
-    // Initialize chatbot state (expanded on desktop, collapsed on small screens so it doesn't cover the page)
+    // Initialize chatbot state (expanded on desktop, where sections leave room for it; collapsed below 993px so it doesn't cover the page)
     const storedChatbotState = localStorage.getItem('chatbot-collapsed');
     const isChatbotCollapsed = storedChatbotState === null
-        ? window.matchMedia('(max-width: 768px)').matches
+        ? window.matchMedia('(max-width: 992px)').matches
         : storedChatbotState === 'true';
     if (isChatbotCollapsed) {
         document.getElementById('chatbot-container').classList.add('collapsed');
@@ -2326,8 +2476,16 @@
         executeChatQuery(text);
     }
 
+    // Once a question is asked, shrink the suggestions to one chip so the answer gets the space
+    function setChatPresetsCompact(compact) {
+        const presets = document.getElementById('chat-presets');
+        presets.classList.toggle('compact', compact);
+        presets.querySelector('.chat-presets-toggle').setAttribute('aria-expanded', String(!compact));
+    }
+
     function executeChatQuery(questionText) {
         isTyping = true;
+        setChatPresetsCompact(true);
         const messagesBox = document.getElementById('chat-messages-box');
         const typingIndicator = document.getElementById('chat-typing-indicator');
         const presetBtns = document.querySelectorAll('.chat-preset-btn');
