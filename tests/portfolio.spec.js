@@ -189,14 +189,31 @@ test.describe('Portfolio Page Tests', () => {
         expect(rootStyles.darkPrimary).not.toBe('#a8c7fa');
 
         // Verify warm amber/orange primary tokens
-        expect(rootStyles.lightPrimary.toLowerCase()).toBe('#e88800');
+        expect(rootStyles.lightPrimary.toLowerCase()).toBe('#a85300');
         expect(rootStyles.darkPrimary.toLowerCase()).toBe('#fbbf24');
+    });
+
+    test('Mobile menu toggle is a keyboard-accessible button', async ({ page }) => {
+        await page.setViewportSize({ width: 390, height: 800 });
+        const toggle = page.locator('button.hamburger');
+        await expect(toggle).toBeVisible();
+        await expect(toggle).toHaveAttribute('aria-controls', 'nav-menu');
+        await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+
+        await toggle.focus();
+        await page.keyboard.press('Enter');
+        await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+        await expect(page.locator('#nav-menu')).toHaveClass(/active/);
+
+        await page.keyboard.press('Escape');
+        await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+        await expect(page.locator('#nav-menu')).not.toHaveClass(/active/);
     });
 
     test('Profile photo is rendered in About Me card and loads successfully', async ({ page }) => {
         const profileImg = page.locator('.profile-avatar img, img.profile-avatar-img');
         await expect(profileImg).toBeVisible();
-        await expect(profileImg).toHaveAttribute('src', /assets\/images\/prasad-photo\.jpg/);
+        await expect(profileImg).toHaveAttribute('src', /assets\/images\/prasad-photo\.webp/);
         await expect(profileImg).toHaveAttribute('alt', /Prasad Rane/i);
 
         // Check that the image actually loaded successfully
