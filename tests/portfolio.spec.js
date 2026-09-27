@@ -181,7 +181,7 @@ test.describe('Portfolio Page Tests', () => {
     test('Profile photo is rendered in About Me card and loads successfully', async ({ page }) => {
         const profileImg = page.locator('.profile-avatar img, img.profile-avatar-img');
         await expect(profileImg).toBeVisible();
-        await expect(profileImg).toHaveAttribute('src', /assets\/images\/prasad-photo\.jpg/);
+        await expect(profileImg).toHaveAttribute('src', /assets\/images\/prasad-photo\.webp/);
         await expect(profileImg).toHaveAttribute('alt', /Prasad Rane/i);
 
         // Check that the image actually loaded successfully
