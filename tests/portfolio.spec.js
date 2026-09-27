@@ -248,6 +248,11 @@ test.describe('Portfolio Page Tests', () => {
         expect(isLoaded).toBe(true);
     });
 
+    test('Timeline starts with current work and contact info has no phone number', async ({ page }) => {
+        await expect(page.locator('.experience-item .job-duration').first()).toContainText('Present');
+        await expect(page.locator('a[href^="tel:"]')).toHaveCount(0);
+    });
+
     test.describe('on a phone', () => {
         test.use({ viewport: { width: 375, height: 667 } });
 
