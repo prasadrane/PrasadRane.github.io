@@ -1,6 +1,6 @@
 # Prasad's Portfolio
 
-🌐 **Live Portfolio:** [https://prasadrane.github.io/](https://prasadrane.github.io/)
+🌐 **Live Portfolio:** [https://prasadrane.vercel.app/](https://prasadrane.vercel.app/) (also at [prasadrane.github.io](https://prasadrane.github.io/))
 
 ## AI-Assisted Development
 

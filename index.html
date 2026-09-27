@@ -11,15 +11,15 @@
     <meta name="keywords" content="Prasad Rane, Software Engineer, .NET, Angular, AWS, AI, Amazon Bedrock, Portfolio">
     <meta name="author" content="Prasad Rane">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://prasadrane.github.io/">
+    <link rel="canonical" href="https://prasadrane.vercel.app/">
 
     <!-- Link previews (Open Graph / Twitter) -->
     <meta property="og:title" content="Prasad Rane – Software Engineer Portfolio">
     <meta property="og:description" content="Experienced Software Engineer specializing in cloud-native applications, AI integration, and full-stack development.">
     <meta property="og:type" content="profile">
-    <meta property="og:url" content="https://prasadrane.github.io/">
+    <meta property="og:url" content="https://prasadrane.vercel.app/">
     <meta property="og:site_name" content="Prasad Rane">
-    <meta property="og:image" content="https://prasadrane.github.io/assets/images/prasad-photo.jpg">
+    <meta property="og:image" content="https://prasadrane.vercel.app/assets/images/prasad-photo.jpg">
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="600">
     <meta property="og:image:height" content="600">
@@ -29,7 +29,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Prasad Rane – Software Engineer">
     <meta name="twitter:description" content="Portfolio showcasing 10+ years of engineering experience, AWS certification, and innovative projects.">
-    <meta name="twitter:image" content="https://prasadrane.github.io/assets/images/prasad-photo.jpg">
+    <meta name="twitter:image" content="https://prasadrane.vercel.app/assets/images/prasad-photo.jpg">
     <meta name="twitter:image:alt" content="Portrait of Prasad Rane">
 
     <!-- Structured data -->
@@ -37,10 +37,10 @@
     {
         "@context": "https://schema.org",
         "@type": "Person",
-        "@id": "https://prasadrane.github.io/#person",
+        "@id": "https://prasadrane.vercel.app/#person",
         "name": "Prasad Rane",
-        "url": "https://prasadrane.github.io/",
-        "image": "https://prasadrane.github.io/assets/images/prasad-photo.jpg",
+        "url": "https://prasadrane.vercel.app/",
+        "image": "https://prasadrane.vercel.app/assets/images/prasad-photo.jpg",
         "jobTitle": "Software Engineer",
         "description": "Software Engineer with 10+ years of experience in .NET, Angular, AWS, and AI.",
         "alumniOf": [{"@type": "CollegeOrUniversity", "name": "University of Cincinnati"}, {"@type": "CollegeOrUniversity", "name": "Savitribai Phule Pune University"}],
@@ -1911,7 +1911,7 @@
                         <ul>
                             <li>Built and shipped the AI projects featured below: <span class="highlight">Content Machine</span>, <span class="highlight">Operon Job Hunter</span>, <span class="highlight">Code Turtle Engine</span>, and a <span class="highlight">GraphRAG resume assistant</span>.</li>
                             <li>Earned the <span class="highlight">AWS Certified Cloud Practitioner</span> certification (Apr 2026).</li>
-                            <li>Deepened hands-on skills in multi-agent orchestration (LangGraph), GraphRAG, and .NET 10 / Roslyn tooling.</li>
+                            <li>Deepened hands-on skills in multi-agent systems, GraphRAG with vector search (LanceDB), and .NET 10 / Roslyn tooling.</li>
                         </ul>
                     </div>
                 </div>
@@ -2104,17 +2104,18 @@
                     <div class="project-content">
                         <h3 class="project-title">Operon Job Hunter</h3>
                         <p class="project-description">
-                            An autonomous multi-agent job search platform that executes the full hiring pipeline end-to-end.
-                            9 concurrent ATS crawlers (Greenhouse, Lever, Workday…) feed a LangGraph DAG that runs GraphRAG
-                            resume tailoring, H-1B visa gating, and Patchright browser form submission — all gated by
-                            human-in-the-loop checkpoints. Ships with a locally distilled 1.7B SLM for zero-cost inference.
+                            An autonomous multi-agent job search platform that tailors resumes to each posting.
+                            A LanceDB-backed GraphRAG index grounds every tailored resume in real experience,
+                            multi-provider LLM failover (Amazon Bedrock, Google Gemini, Qwen) keeps it running,
+                            and a ReportLab compiler outputs ATS-optimized PDFs, served from Vercel Edge.
                         </p>
                         <div class="project-tech">
-                            <span class="tech-badge">LangGraph</span>
-                            <span class="tech-badge">Patchright</span>
-                            <span class="tech-badge">FastAPI</span>
-                            <span class="tech-badge">NetworkX GraphRAG</span>
-                            <span class="tech-badge">Qwen3 LLMs</span>
+                            <span class="tech-badge">LanceDB GraphRAG</span>
+                            <span class="tech-badge">Amazon Bedrock</span>
+                            <span class="tech-badge">Google Gemini</span>
+                            <span class="tech-badge">Qwen</span>
+                            <span class="tech-badge">ReportLab</span>
+                            <span class="tech-badge">Vercel Edge</span>
                             <span class="tech-badge">Python</span>
                         </div>
                         <div class="project-actions">
