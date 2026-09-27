@@ -105,6 +105,21 @@ test.describe('Portfolio Page Tests', () => {
         await expect(chatbotContainer).not.toHaveClass(/collapsed/);
     });
 
+    test('Chatbot is labeled as a preview and links to the live GraphRAG app', async ({ page }) => {
+        const status = page.locator('.mock-chatbot-widget .chat-status');
+        await expect(status).toContainText(/Preview/i);
+        await expect(status).not.toContainText(/Active GraphRAG Index/i);
+        await expect(status.locator('a.chat-live-link')).toHaveAttribute('href', 'https://prasad-resumes-graphrag.vercel.app/');
+    });
+
+    test('Unmatched questions point to the live app', async ({ page }) => {
+        const chatbotWidget = page.locator('.mock-chatbot-widget');
+        await chatbotWidget.locator('#chat-input-field').fill('What is your favorite color?');
+        await chatbotWidget.locator('#chat-send-btn').click({ force: true });
+        const lastAiMsg = chatbotWidget.locator('.chat-message-ai').last();
+        await expect(lastAiMsg.locator('a.chat-live-link')).toHaveAttribute('href', 'https://prasad-resumes-graphrag.vercel.app/', { timeout: 10000 });
+    });
+
     test('View Resume buttons point to correct hosted app link', async ({ page }) => {
         const viewResumeBtn = page.locator('#downloadResumeBtn');
         await expect(viewResumeBtn).toBeVisible();
@@ -188,5 +203,25 @@ test.describe('Portfolio Page Tests', () => {
         const isLoaded = await profileImg.evaluate((img) => img.complete && img.naturalWidth > 0);
         expect(isLoaded).toBe(true);
     });
-});
 
+    test.describe('on a phone', () => {
+        test.use({ viewport: { width: 375, height: 667 } });
+
+        test('Chatbot starts collapsed and fits the screen when opened', async ({ page }) => {
+            const container = page.locator('.mock-chatbot-widget-container');
+            await expect(container).toHaveClass(/collapsed/);
+            await expect(container.locator('.chatbot-launcher-btn')).toBeVisible();
+
+            await page.evaluate(() => toggleChatbot(false));
+            const widget = page.locator('.mock-chatbot-widget');
+            await expect(widget).toBeVisible();
+            await page.waitForTimeout(500);
+            const box = await widget.boundingBox();
+            expect(box.x).toBeGreaterThanOrEqual(0);
+            expect(box.y).toBeGreaterThanOrEqual(0);
+            expect(box.x + box.width).toBeLessThanOrEqual(375);
+            expect(box.y + box.height).toBeLessThanOrEqual(667);
+            await expect(widget.locator('#chat-input-field')).toBeInViewport();
+        });
+    });
+});

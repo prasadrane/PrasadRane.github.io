@@ -966,8 +966,10 @@
             box-shadow: 0 12px 36px rgba(0, 0, 0, 0.16), var(--shadow-md);
             display: flex;
             flex-direction: column;
-            width: 400px;
-            height: 700px;
+            /* Fit the viewport: never taller than the space below the navbar */
+            width: min(400px, calc(100vw - 50px));
+            height: min(640px, calc(100vh - 130px));
+            height: min(640px, calc(100dvh - 130px));
             overflow: hidden;
             position: relative;
             transform-origin: bottom right;
@@ -1121,9 +1123,24 @@
         .status-dot {
             width: 6px;
             height: 6px;
-            background: #10b981;
+            background: var(--text-secondary);
             border-radius: 100px;
-            animation: pulse-green 2s infinite;
+        }
+
+        .chat-live-link {
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .chat-live-link:hover {
+            text-decoration: underline;
+        }
+
+        .chat-message-ai .chat-live-link {
+            display: inline-block;
+            margin-top: 0.5rem;
         }
 
         @keyframes pulse-green {
@@ -1413,9 +1430,6 @@
                 width: 56px;
                 height: 56px;
             }
-            .chat-preset-buttons {
-                grid-template-columns: 1fr;
-            }
             .mock-chatbot-widget-container {
                 bottom: 15px;
                 right: 15px;
@@ -1424,7 +1438,11 @@
             }
             .mock-chatbot-widget.floating {
                 width: 100%;
-                height: 380px;
+                height: min(560px, calc(100vh - 100px));
+                height: min(560px, calc(100dvh - 100px));
+            }
+            .chat-messages {
+                padding: 1rem;
             }
             .chatbot-launcher-btn {
                 right: 0;
@@ -1989,7 +2007,8 @@
                         <div class="chat-name">Prasad's Agent</div>
                         <div class="chat-status">
                             <span class="status-dot"></span>
-                            Active GraphRAG Index
+                            Preview · scripted answers ·
+                            <a href="https://prasad-resumes-graphrag.vercel.app/" target="_blank" rel="noopener noreferrer" class="chat-live-link">Live app ↗</a>
                         </div>
                     </div>
                 </div>
@@ -1999,7 +2018,8 @@
             </div>
             <div class="chat-messages" id="chat-messages-box">
                 <div class="chat-message chat-message-ai">
-                    Hi there! Ask a question below to learn more about Prasad's work, experience, and skills.
+                    Hi there! This is a lightweight preview with a few pre-written answers about Prasad's work. For live answers from his GraphRAG resume index, try the full app.
+                    <br><a href="https://prasad-resumes-graphrag.vercel.app/" target="_blank" rel="noopener noreferrer" class="chat-live-link">Open the GraphRAG chatbot ↗</a>
                 </div>
                 <div class="chat-typing-indicator" id="chat-typing-indicator">
                     <span></span>
@@ -2198,8 +2218,11 @@
         }
     }
 
-    // Initialize chatbot state (default expanded)
-    const isChatbotCollapsed = localStorage.getItem('chatbot-collapsed') === 'true';
+    // Initialize chatbot state (expanded on desktop, collapsed on small screens so it doesn't cover the page)
+    const storedChatbotState = localStorage.getItem('chatbot-collapsed');
+    const isChatbotCollapsed = storedChatbotState === null
+        ? window.matchMedia('(max-width: 768px)').matches
+        : storedChatbotState === 'true';
     if (isChatbotCollapsed) {
         document.getElementById('chatbot-container').classList.add('collapsed');
     }
@@ -2272,6 +2295,7 @@
 
         // Formulate response based on keywords
         let matchedAnswer = "";
+        let showLiveLink = false;
         const lowerQuestion = questionText.toLowerCase();
 
         // Specific checks first
@@ -2284,8 +2308,9 @@
         } else if (lowerQuestion.includes('dotnet') || lowerQuestion.includes('c#') || lowerQuestion.includes('.net') || lowerQuestion.includes('stack') || lowerQuestion.includes('programming') || lowerQuestion.includes('experience') || lowerQuestion.includes('years') || lowerQuestion.includes('work')) {
             matchedAnswer = mockQADatabase['dotnet-exp'].answer;
         } else {
-            // General Fallback instructing them to try the live Vercel app
-            matchedAnswer = "Great question! To get a live, dynamic answer powered by Google Gemini and my Microsoft GraphRAG resume index, try asking this on my hosted application! Click 'Launch App 🚀' under the flagship project card to play with it live.";
+            // General fallback: this preview only has scripted answers, so point to the live app
+            matchedAnswer = "This preview only has a few pre-written answers, so I can't answer that one here. The full chatbot, powered by Google Gemini and a Microsoft GraphRAG index of Prasad's resume, can answer it live.";
+            showLiveLink = true;
         }
 
         // Simulate network delay and response typing
@@ -2307,6 +2332,17 @@
                     charIndex++;
                 } else {
                     clearInterval(typingInterval);
+                    if (showLiveLink) {
+                        const link = document.createElement('a');
+                        link.href = 'https://prasad-resumes-graphrag.vercel.app/';
+                        link.target = '_blank';
+                        link.rel = 'noopener noreferrer';
+                        link.className = 'chat-live-link';
+                        link.textContent = 'Ask it in the live app ↗';
+                        aiMsgDiv.appendChild(document.createElement('br'));
+                        aiMsgDiv.appendChild(link);
+                        messagesBox.scrollTop = messagesBox.scrollHeight;
+                    }
                     isTyping = false;
                     // Enable elements
                     presetBtns.forEach(btn => btn.disabled = false);
