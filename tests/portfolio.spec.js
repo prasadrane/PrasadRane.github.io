@@ -252,7 +252,7 @@ test.describe('Portfolio Page Tests', () => {
         const first = page.locator('.experience-item').first();
         await expect(first.locator('.company-name')).toHaveText('Independent Work');
         await expect(first.locator('.job-duration')).toContainText('Present');
-        await expect(page.locator('.experience-item .company-name', { hasText: 'MSIS' })).toHaveCount(1);
+        await expect(page.locator('.experience-item .job-title', { hasText: 'MSIS' })).toHaveCount(1);
     });
 
     test('Contact info has no phone number', async ({ page }) => {

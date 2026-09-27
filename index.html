@@ -43,6 +43,7 @@
         "image": "https://prasadrane.github.io/assets/images/prasad-photo.jpg",
         "jobTitle": "Software Engineer",
         "description": "Software Engineer with 10+ years of experience in .NET, Angular, AWS, and AI.",
+        "alumniOf": [{"@type": "CollegeOrUniversity", "name": "University of Cincinnati"}, {"@type": "CollegeOrUniversity", "name": "Savitribai Phule Pune University"}],
         "knowsAbout": [".NET", "C#", "Angular", "AWS", "Amazon Bedrock", "GraphRAG", "AI Agents", "Python", "Kafka"],
         "hasCredential": {
             "@type": "EducationalOccupationalCredential",
@@ -60,7 +61,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400..800&family=Roboto:wght@400..700&family=JetBrains+Mono:wght@400..600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_forward,call,cloud,code,dark_mode,description,edit_note,expand_less,expand_more,folder,handyman,light_mode,link,lock,mail,monitoring,open_in_new,psychology,public,rocket_launch,travel_explore,verified,wb_sunny,widgets&display=block" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_forward,call,cloud,code,dark_mode,database,description,edit_note,expand_less,expand_more,folder,handyman,light_mode,link,lock,mail,monitoring,open_in_new,psychology,public,rocket_launch,travel_explore,verified,wb_sunny,widgets&display=block" rel="stylesheet" />
     
     <style>
         /* ---------- Material Design 3 Color Tokens ---------- */
@@ -1838,6 +1839,9 @@
                         <span class="skill-tag">Intent-to-API Routing</span>
                         <span class="skill-tag">GraphRAG</span>
                         <span class="skill-tag">Vector Indexing</span>
+                        <span class="skill-tag">Semantic Kernel</span>
+                        <span class="skill-tag">Pydantic</span>
+                        <span class="skill-tag">Ollama / vLLM</span>
                         <span class="skill-tag">GitHub Copilot</span>
                         <span class="skill-tag">Claude Code</span>
                         <span class="skill-tag">Google Gemini</span>
@@ -1854,6 +1858,7 @@
                         <span class="skill-tag">VS Code</span>
                         <span class="skill-tag">Rider</span>
                         <span class="skill-tag">Postman</span>
+                        <span class="skill-tag">Playwright</span>
                         <span class="skill-tag">Jenkins</span>
                     </div>
                 </div>
@@ -1873,6 +1878,19 @@
                         <span class="skill-tag">dotnet-dump</span>
                         <span class="skill-tag">xUnit / Moq</span>
                         <span class="skill-tag">TDD</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-title">
+                        <span class="material-symbols-outlined">database</span>
+                        Databases
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">SQL Server</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">DynamoDB (single-table design)</span>
+                        <span class="skill-tag">LanceDB (vector)</span>
                     </div>
                 </div>
             </div>
@@ -1909,6 +1927,8 @@
                             <li>Architected a self-service Product Config platform (Angular 14/18, .NET 6/8, DynamoDB), reducing rule deployment from <span class="highlight">14 days to &lt;15 minutes</span> and enabling 47 self-service production changes in month one.</li>
                             <li>Re-engineered Dynatrace synthetic monitoring across Fannie Mae loan microservices, slashing on-call alert noise by <span class="highlight">80%</span>, improving observability accuracy from 60% to 98%, and reclaiming ~20 engineering hours monthly.</li>
                             <li class="exp-hidden">Established enterprise-wide Kafka / AWS MSK governance standards (topic naming, IAM least-privilege, Avro Schema Registry) adopted across <span class="highlight">5 event-driven teams within 3 months</span>, with schema compatibility checks embedded directly into CI/CD.</li>
+                            <li class="exp-hidden">Propagated correlation IDs through a 4-stage AWS Lambda / SQS pipeline, achieving <span class="highlight">100% cross-service log correlation</span> with zero DLQ message loss and cutting incident investigation from hours to minutes.</li>
+                            <li class="exp-hidden">Mentored interns and associate engineers through architecture onboarding, PR reviews, and live PagerDuty / Dynatrace incident walkthroughs, bringing a teammate to <span class="highlight">independent on-call with zero incidents</span>.</li>
                             <li class="exp-hidden">Diagnosed and resolved intermittent 10–15s transaction stalls in a 50,000+ daily transaction service using <code>dotnet-counters</code>, <code>dotnet-dump</code>, and WinDbg; implemented <code>SemaphoreSlim</code> throttling for <span class="highlight">99.99% availability</span>.</li>
                             <li class="exp-hidden">Owned end-to-end OAuth2/JWT security migration across 7 dependent teams, resolving 3 high-priority security audit findings and reducing auth failures by <span class="highlight">60%</span>.</li>
                             <li class="exp-hidden">Built a one-command Docker Compose local dev environment, reducing new-developer setup from <span class="highlight">1–2 weeks to &lt;1 day</span> (&lt;5 minutes container spin-up).</li>
@@ -1936,9 +1956,9 @@
 
                 <div class="experience-item">
                     <div class="experience-dot"></div>
-                    <div class="company-name">Master of Science in Information Systems (MSIS)</div>
-                    <div class="job-title">Graduate Studies</div>
-                    <div class="job-duration">2018 – 2019</div>
+                    <div class="company-name">University of Cincinnati</div>
+                    <div class="job-title">M.S. in Information Systems (MSIS)</div>
+                    <div class="job-duration">2018 – 2019 | Cincinnati, OH</div>
                 </div>
                 <div class="experience-item">
                     <div class="experience-dot"></div>
@@ -1964,6 +1984,12 @@
                             <li>Designed relational schemas and personally handled IIS deployment and user training, delivering projects from requirements through post-launch support on time and within budget.</li>
                         </ul>
                     </div>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-dot"></div>
+                    <div class="company-name">Savitribai Phule Pune University</div>
+                    <div class="job-title">B.E. in Electronics &amp; Telecommunication</div>
+                    <div class="job-duration">2009 – 2013 | Pune, India</div>
                 </div>
             </div>
 
@@ -2465,7 +2491,7 @@
         },
         'journey': {
             question: "Can you summarize his professional journey?",
-            answer: "Prasad's career spans over a decade of building high-quality software:\n\n• Since Aug 2025: independent work, building the AI projects on this page, earning the AWS Cloud Practitioner certification, and upskilling.\n1. Rocket Mortgage (2023–2025): Software Engineer building an AI Intent-to-API router (Amazon Bedrock), migrating a VB.NET underwriting engine to AWS ECS Fargate (40% cost cut), and establishing enterprise Kafka governance across 5 teams.\n2. London Computer Systems (2019–2023): Software Developer optimizing SQL Server reports (45s → <3s), building payment gateway integrations (zero ledger corruption), and architecting a GraphQL engine that cut dashboard load times 65%.\n• 2018–2019: Master of Science in Information Systems (MSIS).\n3. EXFO Electro-Optical Engineering (2015–2018): Software Developer resolving sleep-mode memory leaks across hundreds of optical test instruments and building an offline-first REST API sync pipeline for field engineers.\n4. Tanish Infotech (2014–2015): Software Developer delivering full-stack .NET/SQL Server ERP solutions, saving clients 10+ operational hours weekly."
+            answer: "Prasad's career spans over a decade of building high-quality software:\n\n• Since Aug 2025: independent work, building the AI projects on this page, earning the AWS Cloud Practitioner certification, and upskilling.\n1. Rocket Mortgage (2023–2025): Software Engineer building an AI Intent-to-API router (Amazon Bedrock), migrating a VB.NET underwriting engine to AWS ECS Fargate (40% cost cut), and establishing enterprise Kafka governance across 5 teams.\n2. London Computer Systems (2019–2023): Software Developer optimizing SQL Server reports (45s → <3s), building payment gateway integrations (zero ledger corruption), and architecting a GraphQL engine that cut dashboard load times 65%.\n• 2018–2019: M.S. in Information Systems (MSIS), University of Cincinnati.\n3. EXFO Electro-Optical Engineering (2015–2018): Software Developer resolving sleep-mode memory leaks across hundreds of optical test instruments and building an offline-first REST API sync pipeline for field engineers.\n4. Tanish Infotech (2014–2015): Software Developer delivering full-stack .NET/SQL Server ERP solutions, saving clients 10+ operational hours weekly."
         }
     };
 
