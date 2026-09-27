@@ -248,6 +248,17 @@ test.describe('Portfolio Page Tests', () => {
         expect(isLoaded).toBe(true);
     });
 
+    test('Timeline covers independent work and the MSIS degree', async ({ page }) => {
+        const first = page.locator('.experience-item').first();
+        await expect(first.locator('.company-name')).toHaveText('Independent Work');
+        await expect(first.locator('.job-duration')).toContainText('Present');
+        await expect(page.locator('.experience-item .job-title', { hasText: 'MSIS' })).toHaveCount(1);
+    });
+
+    test('Contact info has no phone number', async ({ page }) => {
+        await expect(page.locator('a[href^="tel:"]')).toHaveCount(0);
+    });
+
     test.describe('on a phone', () => {
         test.use({ viewport: { width: 375, height: 667 } });
 
