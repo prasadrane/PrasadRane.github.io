@@ -173,6 +173,33 @@ test.describe('Portfolio Page Tests', () => {
         expect(isLenisInitialized).toBe(true);
     });
 
+    test('Page still works when the Lenis script fails to load', async ({ page }) => {
+        const errors = [];
+        page.on('pageerror', e => errors.push(e.message));
+        await page.route(/lenis/, route => route.abort());
+        await page.reload();
+
+        await expect(page.locator('#home')).toHaveClass(/active-section/);
+        const chatbotWidget = page.locator('.mock-chatbot-widget');
+        await chatbotWidget.locator('.chat-preset-btn').first().click({ force: true });
+        await expect(chatbotWidget.locator('.chat-message-ai').last()).toContainText('Rocket Mortgage', { timeout: 10000 });
+        expect(errors).toEqual([]);
+    });
+
+    test('Chat suggestions shrink to one chip after a question so the answer has room', async ({ page }) => {
+        const chatbotWidget = page.locator('.mock-chatbot-widget');
+        const presetButtons = chatbotWidget.locator('.chat-preset-btn');
+        const toggle = chatbotWidget.locator('.chat-presets-toggle');
+        await expect(toggle).toBeHidden();
+
+        await presetButtons.first().click({ force: true });
+        await expect(presetButtons.first()).toBeHidden();
+        await expect(toggle).toBeVisible();
+
+        await toggle.click({ force: true });
+        await expect(presetButtons.first()).toBeVisible();
+    });
+
     test('Color theme tokens match orange-yellow amber palette and legacy blue is removed', async ({ page }) => {
         const rootStyles = await page.evaluate(() => {
             const root = document.documentElement;
